@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     @IBOutlet var button : UIButton!
     @IBOutlet var countNum: UILabel!
     @IBOutlet weak var nextBtn: UIButton!
-    
+
     
     var count = 0
     
@@ -27,9 +27,6 @@ class ViewController: UIViewController {
     }
 
     
-    
-    
-    
     @IBAction func ButtonClick(sender:Any){
         count += 1
         countNum.text = String(count)
@@ -41,12 +38,10 @@ class ViewController: UIViewController {
         
         //ボタンクリックで画面遷移
          func NextBtn(_ sender: Any) {
-             super.viewDidLoad()
+//             super.viewDidLoad()
          }
     }
-//    @IBOutlet var ImageClick: UIImageView!
-//    @IBAction func ImageClick(sender:Any){
-//        ImageClick.image = #imageLiteral(resourceName: "black.png")
-//    }
+
+    
 }
 

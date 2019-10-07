@@ -25,16 +25,30 @@ class ViewController: UIViewController {
         // print "[100]"
         
         
+        //UIImageコンテナ
         let image : [UIImage] = [
-            UIImage(named: "board")!
+            UIImage(named: "board")!,
+            UIImage(named: "black")!
         ]
-        let imageveiw = UIImageView(image: image[0])
+        //コンテナからの画像を変数にin
+        let imageview = UIImageView(image: image[0])
+        let revView = UIImageView(image: image[1])
+        let imagesize : CGRect = CGRect(x: 0, y: 150, width: 200, height: 200)
+        imageview.frame = imagesize
+        
+        let revsize : CGRect = CGRect(x: 0, y: 150, width: 200, height: 200)
+        revView.frame = revsize
+//        let reverseView: UIImageView = UIImageView(frame:  CGRect(x: 100, y: 360, width: 80, height: 80))
+//        revView.image = UIImage(named: "black")
+        view.addSubview(imageview)
+        view.addSubview(revView)
+        
+
+
+
         let board = [0, 1, 2, 3, 4, 5, 6, 7]
         print(board)
-        let a : CGRect = CGRect(x: 0, y: 150, width: 200, height: 200)
-        imageveiw.frame = a
-        view.addSubview(imageveiw)
-
+        
         
         
         

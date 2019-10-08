@@ -10,6 +10,17 @@ import UIKit
 
 class ViewController: UIViewController {
 
+//    var ButtonArray : [UIButton] = []
+            //UIImageコンテナ
+            let image : [UIImage] = [
+                UIImage(named: "board")!,
+                UIImage(named: "black")!,
+                UIImage(named: "white")!
+            ]
+    
+            //コンテナからの画像を変数にin
+    //        let imageview = UIImageView(image: image[0])
+    //        let revView = UIImageView(image: image[1])
     let boardimage = UIImage(named: "board")!
     let blackimage = UIImage(named: "black")!
     let whiteimage = UIImage(named: "white")!
@@ -20,6 +31,8 @@ class ViewController: UIViewController {
     
     // UIButton のインスタンスを生成
        let button = UIButton()
+    var ban : [UIButton] = []
+    
     
       var count = 0
     
@@ -32,7 +45,8 @@ class ViewController: UIViewController {
           screenHeight = view.frame.size.height
         
         // Buttonが画面の中央で横幅いっぱいのサイズになるように設定
-           button.frame = CGRect(x:0, y:screenHeight/2-screenWidth/2,width:screenWidth, height:screenWidth)
+//           button.frame = CGRect(x:0, y:screenHeight/2-screenWidth/2,width:screenWidth, height:screenWidth)
+        button.frame = CGRect(x: 0, y: 150, width:  100, height: 100)
         
         // 画像を設定
         button.setImage(boardimage, for: .normal)

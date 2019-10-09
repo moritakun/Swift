@@ -7,162 +7,129 @@
 //
 
 import UIKit
-
 class ViewController: UIViewController {
 
-//    var ButtonArray : [UIButton] = []
-            //UIImageコンテナ
-            let image : [UIImage] = [
-                UIImage(named: "board")!,
-                UIImage(named: "black")!,
-                UIImage(named: "white")!
-            ]
     
-            //コンテナからの画像を変数にin
-    //        let imageview = UIImageView(image: image[0])
-    //        let revView = UIImageView(image: image[1])
-    let boardimage = UIImage(named: "board")!
-    let blackimage = UIImage(named: "black")!
-    let whiteimage = UIImage(named: "white")!
-    
-    // 画面の横幅を取得
-      var screenWidth:CGFloat = 0
-      var screenHeight:CGFloat = 0
-    
+    //UIImageコンテナ
+    let image : [UIImage] = [
+        UIImage(named: "board")!,
+        UIImage(named: "black")!,
+        UIImage(named: "white")!
+    ]
+    var imagecount : Int = 0
+
+
+    class buttonclass:UIButton{
+        var x : Int
+        var y : Int
+        var judge : Int
+        var count : Int
+        init( x:Int, y:Int, judge:Int, count:Int, frame: CGRect ) {
+            self.x = x
+            self.y = y
+            self.judge = judge
+            self.count = count
+            super.init(frame:frame)
+        }
+        required init?(coder: NSCoder) {
+            fatalError("init(coder:) has not been implemented")
+        }
+    }
+
+
     // UIButton のインスタンスを生成
-       let button = UIButton()
-    var ban : [UIButton] = []
+    var button = UIButton()
+
+    //btnを行配列にして表示
+    var ButtonArray : [UIButton] = []
+    
+    // BOARDSIZE　で　ボードのサイズを変更できます。
+    let BOARDSIZE = 8
+    
+    //reset,passButton
+    var resetButton = UIButton()
+    var passButton = UIButton()
+    //StoneCount,muchCountLabel
+    var viewStoneCount = UILabel()
+    var muchCount = UILabel()
+    
+
+    //初期の盤配置
+    func defoult(){
+        let ScreeenW:CGFloat = view.frame.size.width
+        let imagewidth:CGFloat = ScreeenW/8
+        var count : Int = 0
+                    
+        for y in 1...8{
+            for x in 1...8{
+                imagecount = 0
+                //btnサイズ、配列表示開始位置
+                let pox: CGFloat=CGFloat(52*(x-1))
+                let poy: CGFloat=CGFloat(52*(y-1))
+                let button : UIButton = buttonclass(x: x, y: y, judge: imagecount, count: count, frame: CGRect(x: pox, y: poy+150, width: imagewidth, height: imagewidth))
+                //盤のbtn付与
+                button.addTarget(self, action: #selector(ViewController.push), for: .touchUpInside)
+                            
+                //resetButtonの表示
+                resetButton.frame = CGRect(x: 125, y: 575, width: 125, height: 45)
+                resetButton.addTarget(self, action: #selector(ViewController.resetpush), for: .touchUpInside)
+//                resetButton.isEnabled = true
+                //resetButtonの表示非表示
+//                resetButton.isHidden = true
+                resetButton.setTitle("RESET", for: .normal)
+                resetButton.titleLabel?.font = UIFont.systemFont(ofSize: 25)
+                resetButton.setTitleColor(.white, for: .normal)
+                resetButton.backgroundColor = UIColor(red: 0.3, green: 0.7, blue: 0.6, alpha: 1)
+                resetButton.layer.cornerRadius = 25
+                resetButton.layer.shadowOpacity = 0.5
+                resetButton.layer.shadowOffset = CGSize(width: 2, height: 2)
+                self.view.addSubview(resetButton)
+
+                self.view.addSubview(button)
+                ButtonArray.append(button)
+                if(x==5&&y==5 || x==4&&y==4){
+                    imagecount = 1
+                    button.isEnabled = false
+                }
+                if(x==4&&y==5 || x==5&&y==4){
+                    imagecount = 2
+                    button.isEnabled = false
+                }
+                ButtonArray[count].setImage(image[imagecount],for:.normal)
+                count += 1
+            }
+        }
+    }
+
+
+    
+    //btnを押されたときの石があるかないか
+    @objc func push(btnpush:buttonclass){
+        if(btnpush.judge == 0){
+            btnpush.isEnabled = false
+            imagecount = 1
+            ButtonArray[btnpush.count].setImage(image[imagecount], for: .normal)
+            self.view.addSubview(button)
+        print("たっぷ")
+        print(btnpush.isEnabled)
+        }
+    }
+    
+    //リセットbtn
+    @objc func resetpush(resetOle:buttonclass){
+        viewDidLoad()
+    }
     
     
-      var count = 0
+    
+    
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        
-        // 画面の横幅を取得
-          screenWidth = view.frame.size.width
-          screenHeight = view.frame.size.height
-        
-        // Buttonが画面の中央で横幅いっぱいのサイズになるように設定
-//           button.frame = CGRect(x:0, y:screenHeight/2-screenWidth/2,width:screenWidth, height:screenWidth)
-        button.frame = CGRect(x: 0, y: 150, width:  100, height: 100)
-        
-        // 画像を設定
-        button.setImage(boardimage, for: .normal)
-        
-        // Aspect Fit
-        button.imageView?.contentMode = .scaleAspectFit
-        // Horizontal 拡大
-        button.contentHorizontalAlignment = .fill
-        // Vertical 拡大
-        button.contentVerticalAlignment = .fill
-        
-        // ViewにButtonを追加
-        self.view.addSubview(button)
-        
-        // タップされたときのactionをセット
-        button.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ViewController.buttonTapped(_:))))
-        
-        // 背景色を設定
-           self.view.backgroundColor = UIColor(displayP3Red: 0.937,
-                                               green: 0.894, blue: 1.0, alpha: 1.0)
-        
-        
-        
-        
-        
-        
-        
-        var numbers = [1, 2, 3, 4, 5]
-        let numbersCopy = numbers
-        numbers[0] = 100
-        print(numbers)
-        // Prints "[100, 2, 3, 4, 5]"
-        print(numbersCopy)
-        // Prints "[1, 2, 3, 4, 5]"
-        print(numbers[0])
-        // print "[100]"
-        let board = [0, 1, 2, 3, 4, 5, 6, 7]
-        print(board)
-        
-        
-        
-        
-        
-        
-        
-        //UIImageコンテナ
-//        let image : [UIImage] = [
-//            UIImage(named: "board")!,
-//            UIImage(named: "black")!
-//        ]
-        //コンテナからの画像を変数にin
-//        let imageview = UIImageView(image: image[0])
-//        let revView = UIImageView(image: image[1])
-//
-//        imageview.isUserInteractionEnabled = true
-//        let imagesize : CGRect = CGRect(x: 0, y: 150, width: 200, height: 200)
-//
-////        imageview.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ViewController.imageViewTapped(_:))))
-//        self.view.addSubview(imageview)
-//        imageview.frame = imagesize
-//
-//        let revsize : CGRect = CGRect(x: 0, y: 150, width: 200, height: 200)
-//        revView.frame = revsize
-////        let reverseView: UIImageView = UIImageView(frame:  CGRect(x: 100, y: 360, width: 80, height: 80))
-////        revView.image = UIImage(named: "black")
-//        view.addSubview(imageview)
-////        view.addSubview(revView)
-//
-//
-    
-    
+        // Do any additional setup after loading the view, typically from a nib.
+        self.defoult()
     }
     
-    // 画像がタップされたら呼ばれる
-    @objc func buttonTapped(_ sender: AnyObject) {
-        count += 1
-         
-         if(count%3 == 0){
-             button.setImage(boardimage, for: .normal)
-         }
-         else if(count%3 == 1){
-             button.setImage(blackimage, for: .normal)
-         }
-         else if(count%3 == 2){
-             button.setImage(whiteimage, for: .normal)
-         }
-         else{
-         }
-                //UIImageコンテナ
-//                let image : [UIImage] = [
-//                    UIImage(named: "board")!,
-//                    UIImage(named: "black")!,
-//                    UIImage(named: "white")!
-//                ]
-//                //コンテナからの画像を変数にin
-//                let boardview = UIImageView(image: image[0])
-//                let blackview = UIImageView(image: image[1])
-//                let whiteview = UIImageView(image: image[0])
-//
-////                imageview.isUserInteractionEnabled = true
-//                let boardsize : CGRect = CGRect(x: 0, y: 150, width: 200, height: 200)
-////                imageview.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ViewController.imageViewTapped(_:))))
-////                self.view.addSubview(imageview)
-//                boardview.frame = boardsize
-//
-//                let blacksize : CGRect = CGRect(x: 0, y: 150, width: 200, height: 200)
-//                blackview.frame = blacksize
-//        //        let reverseView: UIImageView = UIImageView(frame:  CGRect(x: 100, y: 360, width: 80, height: 80))
-//        //        revView.image = UIImage(named: "black")
-//                let whitesize : CGRect = CGRect(x: 0, y: 150, width: 200, height: 200)
-//                whiteview.frame = whitesize
-////                view.addSubview(imageview)
-//                view.addSubview(blackview)
-        
-    print("タップ")
-        
-    }
 }
-

@@ -53,7 +53,6 @@ class ViewController: UIViewController {
     var viewStoneCount = UILabel()
     var muchCount = UILabel()
     
-
     //初期の盤配置
     func defoult(){
         let ScreeenW:CGFloat = view.frame.size.width
@@ -67,6 +66,8 @@ class ViewController: UIViewController {
                 let pox: CGFloat=CGFloat(52*(x-1))
                 let poy: CGFloat=CGFloat(52*(y-1))
                 let button : UIButton = buttonclass(x: x, y: y, judge: imagecount, count: count, frame: CGRect(x: pox, y: poy+150, width: imagewidth, height: imagewidth))
+                
+                
                 //盤のbtn付与
                 button.addTarget(self, action: #selector(ViewController.push), for: .touchUpInside)
                             
@@ -110,8 +111,11 @@ class ViewController: UIViewController {
             imagecount = 1
             ButtonArray[btnpush.count].setImage(image[imagecount], for: .normal)
             self.view.addSubview(button)
-        print("たっぷ")
-        print(btnpush.isEnabled)
+            
+            //debag
+            print(ButtonArray[4].isEnabled)
+            print("たっぷ")
+            print(btnpush.isEnabled)
         }
     }
     

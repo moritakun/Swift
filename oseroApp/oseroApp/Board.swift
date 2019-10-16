@@ -34,6 +34,7 @@ class Board: UIView
     var nowOsero:Bool=false         //falseが黒、trueが白
 
     var a:Int=0
+    var b:Int=0
     
     //---------------------------
     //  オセロ盤の初期化
@@ -72,6 +73,7 @@ class Board: UIView
     //---------------------------
     func put(mybtn:OSERO,mycolor:Int)
     {
+        a=0
             print("置かれた座標X:\(mybtn.frameX)Y:\(mybtn.frameY)")
            // square[mybtn.frameY][mybtn.frameX]=1
         
@@ -83,6 +85,7 @@ class Board: UIView
                 let n=Cnt_Change(mybtn: mybtn, x: dx, y: dy, color: mycolor)
                 if(n==0)
                 {
+                    a += 1
                     print("そこにはおけない")
                     
                 }
@@ -91,6 +94,7 @@ class Board: UIView
                 {
                     for i in 0..<(n+1)
                     {
+                        b = 2
                     square[mybtn.frameY+i*dy][mybtn.frameX+i*dx]=mycolor
                     print("更新されるはずのボタン座標X:\(mybtn.frameX+i*dx),Y:\(mybtn.frameY+i*dy),square\(square[mybtn.frameX+i*dx][mybtn.frameY+i*dy])")
                     }
@@ -145,6 +149,15 @@ class Board: UIView
     }
     
     //-----------------------ゲッター-------------------------------------
+    //石が置けないコメントの取得
+    func GetA()->Int{
+        return a
+    }
+    
+    //石が置けるコメントの取得
+    func GetB()->Int{
+        return b
+    }
     //黒石の数取得
     func GetBlack()->Int
     {

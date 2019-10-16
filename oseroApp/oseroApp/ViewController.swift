@@ -57,6 +57,7 @@ class ViewController: UIViewController {
      let label=UILabel()
     let label1=UILabel()
      let label2 = UILabel()
+    let label3 = UILabel()
     
     //画面上に表示するフォント構造体
     let font:[String]=["オセロスタート",           //0
@@ -64,6 +65,10 @@ class ViewController: UIViewController {
                          "白の(_・ω・)_ﾊﾞｧﾝ",       //2
                          "終了|ω･) "]             //3
       
+    
+    //置けるか置けないかのコメント構造体
+    let judgefont:String="置けません"
+    
     
     override func viewDidLoad()
     {
@@ -138,12 +143,21 @@ class ViewController: UIViewController {
         label2.backgroundColor=UIColor.orange
         self.view.addSubview(label2)
         labelArray.append(label2)
+    
+    label3.frame=CGRect(x: 0, y: 750, width: ScreenW, height: 100)
+    label3.font=UIFont.systemFont(ofSize: 50)
+    label3.textAlignment=NSTextAlignment.center
+    label3.backgroundColor=UIColor.gray
+    self.view.addSubview(label3)
+    labelArray.append(label3)
         
         for i in labelArray
         {
             view.addSubview(i)
         }
     }
+    
+    
     //-----------------------------------
     //         オセロ盤タップ
     //-----------------------------------
@@ -162,6 +176,7 @@ class ViewController: UIViewController {
         }
       
         Draw()
+        judgeposition()
         cnt+=1
     }
 
@@ -171,7 +186,7 @@ class ViewController: UIViewController {
     //-----------------------------------
     func Draw()
     {
-        let debug=board.Blockosero()
+        _=board.Blockosero()
         let colorJudge=board.Return_Color()
         let get=board.GetBlack()
         let getwhite=board.GetWhite()
@@ -213,6 +228,19 @@ class ViewController: UIViewController {
         for i in labelArray
         {
             view.addSubview(i)
+        }
+    }
+    
+    func judgeposition(){
+        let A=board.GetA()
+        print("A:\(A)")
+        let B=board.GetB()
+        print("B:\(B)")
+        if(A==8){
+            label3.isHidden = false
+            label3.text=judgefont
+        }else if(A<8 && B==2){
+            //label3を隠す。
         }
     }
 }

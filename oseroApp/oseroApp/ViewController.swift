@@ -186,7 +186,6 @@ class ViewController: UIViewController {
     //-----------------------------------
     func Draw()
     {
-        _=board.Blockosero()
         let colorJudge=board.Return_Color()
         let get=board.GetBlack()
         let getwhite=board.GetWhite()
@@ -233,9 +232,10 @@ class ViewController: UIViewController {
     
     func judgeposition(){
         let A=board.GetA()
-        print("A:\(A)")
+//        print("A:\(A)")
         let B=board.GetB()
-        print("B:\(B)")
+//        print("B:\(B)")
+        print("\n\n\n")
         if(A==8){
             label3.isHidden = false
             label3.text=judgefont

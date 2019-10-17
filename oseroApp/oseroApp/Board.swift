@@ -20,10 +20,7 @@ let Judge_Range=[[-1,-1],[0,-1],[1,-1],
 
 class Board: UIView
 {
-//    var Enemy=enemy()       //エネミーのcppのクラス持ってくる
-    //var cnt:Int=1           //
     var square:[[Int]] = []    //判定用２次元配列
-   // var count:Int=1
     var blackcnt:Int=0              //白の石の数
     var whitecnt:Int=0              //黒の石の数
     
@@ -86,34 +83,31 @@ class Board: UIView
                 if(n==0)
                 {
                     a += 1
-                    print("そこにはおけない")
+//                    print("そこにはおけない")
                     
                 }
                 
                 else
                 {
+                    if(!nowOsero)
+                              {
+                                      nowOsero=true
+                                      font=2
+                              }
+                              else
+                              {
+                                  nowOsero=false
+                                  font=1
+                              }
                     for i in 0..<(n+1)
                     {
                         b = 2
                     square[mybtn.frameY+i*dy][mybtn.frameX+i*dx]=mycolor
-                    print("更新されるはずのボタン座標X:\(mybtn.frameX+i*dx),Y:\(mybtn.frameY+i*dy),square\(square[mybtn.frameX+i*dx][mybtn.frameY+i*dy])")
+//                    print("更新されるはずのボタン座標X:\(mybtn.frameX+i*dx),Y:\(mybtn.frameY+i*dy),square\(square[mybtn.frameX+i*dx][mybtn.frameY+i*dy])")
                     }
-                    //フォントの変更
-                       if(!nowOsero)
-                       {
-                               nowOsero=true
-                               font=2
-                       }
-                       else
-                       {
-                           nowOsero=false
-                           font=1
-                       }
                 }
             }
-        
-   
-        //count+=1
+        //フォントの変更
         Now_Count()
     }
     
@@ -141,7 +135,6 @@ class Board: UIView
             }
         }
         allcnt = allcnt-(blackcnt+whitecnt)
-        print(allcnt)
         if(allcnt<=0)
         {
             font=3
@@ -171,12 +164,14 @@ class Board: UIView
     
     //フォント取得
     func GetFont()->Int{
+          print("fontNum->1or2:\(font)")
         return font
     }
     
     //現在の白か黒か取得
     func GetNowOsero()->Bool
     {
+        print("nowOsero->folse or true:\(nowOsero)")
         return nowOsero
     }
     
@@ -212,25 +207,13 @@ class Board: UIView
             
             else if(square[cy][cx]==color)  //範囲内
             {
-                Blockosero()
-                
-//                print("範囲内:座標\(square)に\(color)がある。")
                 return i
             }
-            print("i\(i)")
-            //Blockosero()
+//            print("i\(i)")
         }
         return 0
     }
-    
-    
-    func Blockosero(){
-        print("a\(a)")
-        if(a==0){
-        print("そこには置けない")
-      
-        }
-    }
+
     
     //---------------------------
     //デバッグ用

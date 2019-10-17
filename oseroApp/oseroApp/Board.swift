@@ -6,8 +6,6 @@
 //  Copyright © 2019 森田裕. All rights reserved.
 //
 
-
-
 import UIKit
 
 //      オセロの白黒判定
@@ -18,36 +16,32 @@ let Judge_Range=[[-1,-1],[0,-1],[1,-1],
 
 
 
-class Board: UIView
-{
+class Board: UIView{
     var square:[[Int]] = []    //判定用２次元配列
     var blackcnt:Int=0              //白の石の数
     var whitecnt:Int=0              //黒の石の数
     
-    var font:Int=0
+    var font : Int = 0
     var allcnt:Int=64               //盤面の空きはどのぐらいか
-    
-    
+
     var nowOsero:Bool=false         //falseが黒、trueが白
 
-    var a:Int=0
-    var b:Int=0
+    var notposition:Int=0                   //石が置けない場合の変数
+    var takeposition:Int=0                   //石が置ける場合の変数
+    
+    
     
     //---------------------------
     //  オセロ盤の初期化
     //---------------------------
-    func Board_Init()
-    {
-        for _ in 0...num
-        {
+    func Board_Init(){
+        for _ in 0...num{
             var array:[Int]=[]
-            for _ in 0...num
-            {
+            for _ in 0...num{
                 array+=[0]
             }
             square+=[array]
         }
-        
         //一番最初の状態生成
         square[4][4]=2
         square[5][5]=2
@@ -55,171 +49,151 @@ class Board: UIView
         square[4][5]=1
 
         //番兵
-        for i in 0...num
-        {
+        for i in 0...num{
             square[0][i]=3
             square[9][i]=3
-            
             square[i][0]=3
             square[i][9]=3
         }
     }
     
+    
+    
     //---------------------------
     // 石が置かれた時
     //---------------------------
-    func put(mybtn:OSERO,mycolor:Int)
-    {
-        a=0
-            print("置かれた座標X:\(mybtn.frameX)Y:\(mybtn.frameY)")
-           // square[mybtn.frameY][mybtn.frameX]=1
-        
+    func put(mybtn:OSERO,mycolor:Int){
+        var AuthenticityControl : Int = 0         //true,falseの制御
+        notposition=0
+        print("置かれた座標X:\(mybtn.frameX)Y:\(mybtn.frameY)")
             //自分を中心とした前後左右斜めに色違いの石があるか
-            for i in 0...7
-            {
-                let dx=Judge_Range[i][0]
-                let dy=Judge_Range[i][1]
-                let n=Cnt_Change(mybtn: mybtn, x: dx, y: dy, color: mycolor)
-                if(n==0)
-                {
-                    a += 1
-//                    print("そこにはおけない")
-                    
-                }
-                
-                else
-                {
-                    if(!nowOsero)
-                              {
-                                      nowOsero=true
-                                      font=2
-                              }
-                              else
-                              {
-                                  nowOsero=false
-                                  font=1
-                              }
-                    for i in 0..<(n+1)
-                    {
-                        b = 2
-                    square[mybtn.frameY+i*dy][mybtn.frameX+i*dx]=mycolor
-//                    print("更新されるはずのボタン座標X:\(mybtn.frameX+i*dx),Y:\(mybtn.frameY+i*dy),square\(square[mybtn.frameX+i*dx][mybtn.frameY+i*dy])")
+        for i in 0...7{
+            let dx=Judge_Range[i][0]
+            let dy=Judge_Range[i][1]
+            let n=Cnt_Change(mybtn: mybtn, x: dx, y: dy, color: mycolor)
+            if(n==0){
+                notposition += 1
+//              print("そこにはおけない")
+            }
+            else{
+                if(AuthenticityControl == 0){
+                    if(!nowOsero){
+                        nowOsero=true
+                    }
+                    else{
+                        nowOsero=false
                     }
                 }
+                AuthenticityControl += 1
+//                print("aa:\(AuthenticityControl)")
+                for i in 0..<(n+1){
+                    takeposition = 2
+                    square[mybtn.frameY+i*dy][mybtn.frameX+i*dx]=mycolor
+                }
             }
+            
+            //盤面全体の空白テェック
+            BlankCheck()
+        }
         //フォントの変更
         Now_Count()
+        print("\(square[1...4])\n")
+        print("\(square[5...8])\n")
     }
     
     
-    //---------------------------
-    //現在の盤面上にある石のカウント
-    //---------------------------
-    func Now_Count()
-    {
-        blackcnt=0
-        whitecnt=0
-        allcnt=64
-        for y in 0...num
-        {
-            for x in 0...num
-            {
-                if(square[y][x]==1)
-                {
-                     blackcnt+=1
-                }
-                else if(square[y][x]==2)
-                {
-                   whitecnt+=1
-                }
-            }
-        }
-        allcnt = allcnt-(blackcnt+whitecnt)
-        if(allcnt<=0)
-        {
-            font=3
-        }
-    }
     
-    //-----------------------ゲッター-------------------------------------
-    //石が置けないコメントの取得
-    func GetA()->Int{
-        return a
-    }
-    
-    //石が置けるコメントの取得
-    func GetB()->Int{
-        return b
-    }
-    //黒石の数取得
-    func GetBlack()->Int
-    {
-        return blackcnt
-    }
-    
-    //白石の数取得
-    func GetWhite()->Int{
-        return whitecnt
-    }
-    
-    //フォント取得
-    func GetFont()->Int{
-          print("fontNum->1or2:\(font)")
-        return font
-    }
-    
-    //現在の白か黒か取得
-    func GetNowOsero()->Bool
-    {
-        print("nowOsero->folse or true:\(nowOsero)")
-        return nowOsero
-    }
-    
-    //盤面上の石の状態
-    func Return_Color()->[[Int]]
-    {
-        return square
-    }
-    
-    //-----------------------終了-------------------------------------
     
     //---------------------------
     //石の色を変更
     //---------------------------
-    func Cnt_Change(mybtn:OSERO,x:Int,y:Int,color:Int)->Int
-    {
+    func Cnt_Change(mybtn:OSERO,x:Int,y:Int,color:Int)->Int{
         var cx=mybtn.frameX
         var cy=mybtn.frameY
         
         for i in 0...num{
             cx=x+cx
             cy=y+cy
-            if(square[cy][cx]==0)   //空白
-            {
-               
+            if(square[cy][cx]==0){  //空白
                 return 0
             }
-            else if(square[cy][cx]==3)  //範囲外
-            {
-              
+            else if(square[cy][cx]==3){  //範囲外
                 return 0
             }
-            
-            else if(square[cy][cx]==color)  //範囲内
-            {
+            else if(square[cy][cx]==color){  //範囲内
                 return i
             }
-//            print("i\(i)")
         }
         return 0
     }
+    
+    
+    
+    func BlankCheck(){
+        
+    }
 
+    //-----------------------ゲッター-------------------------------------
+        //石が置けないコメントの取得
+        func GetNotPosition()->Int{
+            return notposition
+        }
+        //石が置けるコメントの取得
+        func GetTakePosition()->Int{
+            return takeposition
+        }
+        //黒石の数取得
+        func GetBlack()->Int{
+            return blackcnt
+        }
+        //白石の数取得
+        func GetWhite()->Int{
+            return whitecnt
+        }
+        //フォント取得
+        func GetFont()->Int{
+    //          print("fontNum->1or2:\(font)")
+            return font
+        }
+        //現在の白か黒か取得
+        func GetNowOsero()->Bool{
+    //        print("nowOsero->folse or true:\(nowOsero)")
+            return nowOsero
+        }
+        //盤面上の石の状態
+        func Return_Color()->[[Int]]{
+            return square
+        }
+        
+        //-----------------------終了-------------------------------------
+        
+    
+    
     
     //---------------------------
-    //デバッグ用
+    //現在の盤面上にある石のカウント
     //---------------------------
-    func debug()
-    {
-       print(square)
+    func Now_Count(){
+        blackcnt=0
+        whitecnt=0
+        allcnt=64
+        for y in 0...num{
+            for x in 0...num{
+                if(square[y][x]==1){
+                    blackcnt+=1
+                }
+                else if(square[y][x]==2){
+                    whitecnt+=1
+                }
+            }
+        }
+        allcnt = allcnt-(blackcnt+whitecnt)
+        if(allcnt==0){
+            font=3
+        }
     }
+    
+    
+    
+    
 }

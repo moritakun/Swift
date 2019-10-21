@@ -140,7 +140,6 @@ class ViewController: UIViewController {
     //-----------------------------------
     @objc func pushed(mybtn:OSERO){
         let judge:Bool=board.GetNowOsero()
-         print("GetNowOsero->folse or true:\(judge)\n")
         if(!judge){
             board.put(mybtn:mybtn,mycolor:Color.BLACK.rawValue)
         }
@@ -194,6 +193,15 @@ class ViewController: UIViewController {
         for i in labelArray{
             view.addSubview(i)
         }
+        
+        
+//        let judge:Bool=board.GetNowOsero()
+//         if(!judge){
+//             board.BlankCheck(mycolor:Color.BLACK.rawValue)
+//         }
+//         else{
+//            board.BlankCheck(mycolor:Color.WHITE.rawValue)
+//         }
     }
     
     

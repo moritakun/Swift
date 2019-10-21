@@ -32,7 +32,7 @@ class Board: UIView{
     
     
     //---------------------------
-    //  オセロ盤の初期化
+    //  オセロ盤の初期化(配列に白黒緑の情報を格納)
     //---------------------------
     func Board_Init(){
         for _ in 0...num{
@@ -65,7 +65,7 @@ class Board: UIView{
     func put(mybtn:OSERO,mycolor:Int){
         var AuthenticityControl : Int = 0         //true,falseの制御
         notposition=0
-        print("置かれた座標X:\(mybtn.frameX)Y:\(mybtn.frameY)")
+        print("置かれた座標X,\(mybtn.frameX):Y,\(mybtn.frameY)")
             //自分を中心とした前後左右斜めに色違いの石があるか
         for i in 0...7{
             let dx=Judge_Range[i][0]
@@ -85,20 +85,17 @@ class Board: UIView{
                     }
                 }
                 AuthenticityControl += 1
+                takeposition = 2
 //                print("aa:\(AuthenticityControl)")
-                for i in 0..<(n+1){
-                    takeposition = 2
+                for i in 0...n{
                     square[mybtn.frameY+i*dy][mybtn.frameX+i*dx]=mycolor
                 }
             }
-            
-            //盤面全体の空白テェック
-            BlankCheck()
         }
+        //盤面全体の空白テェック
+//        BlankCheck(mybtn:mybtn,mycolor:mycolor)
         //フォントの変更
         Now_Count()
-        print("\(square[1...4])\n")
-        print("\(square[5...8])\n")
     }
     
     
@@ -129,8 +126,65 @@ class Board: UIView{
     
     
     
-    func BlankCheck(){
+    //---------------------------------------------------------------------
+    //                    盤面全体の空白チェック
+    //---------------------------------------------------------------------
+    func BlankCheck(mycolor:Int){
+        var Blanksquarey : [Int] = []
+        var Blanksquarex : [Int] = []
         
+        //初期値入力
+        for _ in 0...num{
+//            var array:[Int]=[]
+//            array += [0]
+            Blanksquarey += [0]
+            Blanksquarex += [0]
+        }
+        //空白チェック
+        for y in 0...num{
+            for x in 0...num{
+                if(square[y][x] == 0){
+                    Blanksquarey[y] = y
+                    Blanksquarex[x] = x
+        
+                    print("Blanksquare y,\(Blanksquarey[y]):x,\(Blanksquarex[x])")
+                }
+            }
+        }
+        
+        func Blank(x:Int, y:Int, color:Int)->Int{
+            for a in 0...7{
+                    var dx=Judge_Range[a][0]
+                    var dy=Judge_Range[a][1]
+                for i in 0...num{
+                     dx=x+dx
+                     dy=y+dy
+                     if(square[dy][dx]==0){  //空白
+                         return 0
+                     }
+                     else if(square[dy][dx]==3){  //範囲外
+                         return 0
+                     }
+                     else if(square[dy][dx]==color){  //範囲内
+                         return i
+                     }
+                 }
+            }
+            return 0
+        }
+            
+        
+        for h in Blanksquarey{
+            for i in Blanksquarex{
+                let blank = Blank(x: Blanksquarex[i], y: Blanksquarey[h], color:mycolor)
+                if(blank != 0){
+                    print("おけます。")
+                }
+                else{
+                    print("置けません。")
+                }
+            }
+        }
     }
 
     //-----------------------ゲッター-------------------------------------
@@ -152,12 +206,10 @@ class Board: UIView{
         }
         //フォント取得
         func GetFont()->Int{
-    //          print("fontNum->1or2:\(font)")
             return font
         }
         //現在の白か黒か取得
         func GetNowOsero()->Bool{
-    //        print("nowOsero->folse or true:\(nowOsero)")
             return nowOsero
         }
         //盤面上の石の状態
@@ -192,8 +244,5 @@ class Board: UIView{
             font=3
         }
     }
-    
-    
-    
-    
+
 }

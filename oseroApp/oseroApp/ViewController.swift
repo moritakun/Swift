@@ -9,6 +9,7 @@
 import UIKit
 
 let num:Int=9
+var keepturn:Bool = false
 
 //画像用の構造体
 var image: [UIImage] = [
@@ -86,7 +87,6 @@ class ViewController: UIViewController {
         LabelInit()
         board.Board_Init()
         Draw()
-        getblankchecklist = board.BlankCheck(mycolor: 1)
         farstblankchecklist()
     }
     
@@ -104,6 +104,7 @@ class ViewController: UIViewController {
       label.backgroundColor=UIColor.red
       self.view.addSubview(label)
       labelArray.append(label)
+        
       label1.frame=CGRect(x:ScreenW/2,y:600,width:ScreenW/2,height:100)
       label1.font=UIFont.systemFont(ofSize:50)
       label1.textAlignment=NSTextAlignment.center
@@ -137,6 +138,7 @@ class ViewController: UIViewController {
             board.put(mybtn:mybtn,mycolor:Color.WHITE.rawValue)
         }
         Draw()
+        blankchecklistDraw()
     }
 
     
@@ -146,13 +148,12 @@ class ViewController: UIViewController {
     //-----------------------------------
     func Draw(){
         let colorJudge=board.Return_Color()
-        let getnowosero=board.GetNowOsero()
+        var getnowosero=board.GetNowOsero()
         let getblack=board.GetBlack()
         let getwhite=board.GetWhite()
         let getfont=board.GetFont()
         getblankchecklist=board.blankchecklist()
-   
-        
+       
         var cnt=0
         for y in 0...num{
             for x in 0...num{
@@ -165,53 +166,92 @@ class ViewController: UIViewController {
                     ButtonArray[cnt].isEnabled=false
                 }
                 else if(colorJudge[y][x]==Color.NULL.rawValue){
-                    //範囲外判定
-                    ButtonArray[cnt].isHidden=true
+                //範囲外判定
+                ButtonArray[cnt].isHidden=true
                 }
                 else{
-                ButtonArray[cnt].setImage(image[Color.BOARD.rawValue], for: .normal)
+                    ButtonArray[cnt].setImage(image[Color.BOARD.rawValue], for: .normal)
                     ButtonArray[cnt].isEnabled = false
                 }
                 cnt+=1
             }
         }
         
-//        let blankchecklistEmpty:Bool
-//           blankchecklistEmpty = getblankchecklist.isEmpty
-//           if(blankchecklistEmpty == false){  //中身が無い。
-//               //同じ人がもう一度石をおく。
-//               print("\(getblankchecklist)")
-//           }
-//           else if(blankchecklistEmpty == true){
-                   for i in 0..<(getblankchecklist.count)
-                   {
-                       let y = getblankchecklist[i][0]
-                       let x = getblankchecklist[i][1]
-                       ButtonArray[y*10+x].isEnabled = true
-                   }
-               print("\(getblankchecklist)")
-//           }
-//           print("\(blankchecklistEmpty)")
-        
+            
         if(!getnowosero){
             label.text=font[1]
-        }else{
+        }
+        else{
             label.text=font[2]
         }
         if(getfont == 3){
             label.text=font[3]
         }
-
+        
         label1.text="白:\(getwhite)"
         label2.text="黒:\(getblack)"
         for i in labelArray{
             view.addSubview(i)
         }
     }
+        
     
     
     
+    
+
+    func blankchecklistDraw(){
+        var getnowosero=board.GetNowOsero()
+        
+        let blankchecklistEmpty:Bool
+               blankchecklistEmpty = getblankchecklist.isEmpty
+               if(blankchecklistEmpty == true){  //要素が無い(もう一度同じ石を置く)
+                       //次の要素が無いなら、また現在のblankcheckをする
+                       //!getnowosero(false:黒)なら、(true:白)をチェック
+                   if(!getnowosero){
+                       getblankchecklist = board.BlankCheck(mycolor: 2)
+                       for i in 0..<(getblankchecklist.count){
+                           let y = getblankchecklist[i][0]
+                           let x = getblankchecklist[i][1]
+                           ButtonArray[y*10+x].isEnabled = true
+                       }
+                       getnowosero = true
+                       label.text=font[2]
+                   }
+                   //!getnowosero(true:白)なら、(false:黒)をチェック
+                   else{
+                       getblankchecklist = board.BlankCheck(mycolor: 1)
+                       for i in 0..<(getblankchecklist.count){
+                           let y = getblankchecklist[i][0]
+                           let x = getblankchecklist[i][1]
+                           ButtonArray[y*10+x].isEnabled = true
+                       }
+                       getnowosero = false
+                       label.text=font[1]
+                      print("getblankchecklist-true:\(getblankchecklist),\(blankchecklistEmpty)")
+                   }
+                   keepturn = getnowosero
+//                   print("getblankchecklist-true:\(getblankchecklist),\(blankchecklistEmpty)")
+               }
+               else if(blankchecklistEmpty == false){//要素がある
+                   for i in 0..<(getblankchecklist.count){
+                       let y = getblankchecklist[i][0]
+                       let x = getblankchecklist[i][1]
+                       ButtonArray[y*10+x].isEnabled = true
+                   }
+                   print("getblankchecklist-false:\(getblankchecklist),\(blankchecklistEmpty)")
+               }
+    }
+    
+    
+    
+    
+    
+    //----------------------------------------------------------------
+    //           blankchecklistの初期化
+    //----------------------------------------------------------------
     func farstblankchecklist(){
+        getblankchecklist = board.BlankCheck(mycolor: 1)
         for i in 0..<(getblankchecklist.count)
                {
                    let y = getblankchecklist[i][0]
@@ -220,7 +260,6 @@ class ViewController: UIViewController {
                }
            print("\(getblankchecklist)\n")
     }
-
     
     
     

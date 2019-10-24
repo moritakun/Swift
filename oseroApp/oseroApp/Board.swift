@@ -41,6 +41,60 @@ class Board: UIView{
             }
             square+=[array]
         }
+        
+        //--------黒連続する配置-------
+                square[1][1]=2
+                square[1][3]=2
+                square[1][4]=2
+                square[1][6]=2
+        
+                square[2][1]=2
+                square[2][2]=2
+                square[2][3]=2
+                square[2][4]=2
+                square[2][5]=2
+                square[2][6]=2
+        
+                square[3][1]=2
+                square[3][2]=2
+                square[3][3]=2
+                square[3][4]=2
+                square[3][5]=1
+                square[3][6]=2
+                square[3][7]=2
+                square[3][8]=2
+        
+                square[4][1]=2
+                square[4][2]=2
+                square[4][3]=2
+                square[4][4]=2
+                square[4][5]=2
+                square[4][6]=1
+                square[4][7]=2
+        
+                square[5][1]=2
+                square[5][2]=2
+                square[5][3]=2
+                square[5][4]=1
+                square[5][5]=1
+                square[5][6]=2
+                square[5][7]=2
+        
+                square[6][1]=2
+                square[6][2]=2
+                square[6][3]=2
+                square[6][4]=2
+                square[6][5]=2
+                square[6][6]=2
+                square[6][7]=2
+        
+                square[7][1]=2
+                square[7][3]=2
+                square[7][4]=2
+        
+                square[8][3]=2
+        
+        
         //一番最初の状態生成
         square[4][4]=2
         square[5][5]=2
@@ -72,6 +126,7 @@ class Board: UIView{
             if(n==0){
             }
             else{
+                //次の色へチェンジ(nowOsero)
                 if(AuthenticityControl == 0){
                     if(!nowOsero){
                         nowOsero=true

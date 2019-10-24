@@ -53,7 +53,6 @@ class ViewController: UIViewController {
      let label=UILabel()
     let label1=UILabel()
      let label2 = UILabel()
-    let label3 = UILabel()
     var getblankchecklist:[[Int]]=[]
     
     //画面上に表示するフォント構造体
@@ -61,11 +60,7 @@ class ViewController: UIViewController {
                          "黒の(_・ω・)_ﾊﾞｧﾝ",      //1
                          "白の(_・ω・)_ﾊﾞｧﾝ",       //2
                          "終了|ω･) "]             //3
-      
-    
-    //置けるか置けないかのコメント構造体
-    let judgefont:[String]=["置けません",         //0
-                            "置いてください"]      //1
+
 
     
     //------------------------------
@@ -122,13 +117,6 @@ class ViewController: UIViewController {
       label2.backgroundColor=UIColor.orange
       self.view.addSubview(label2)
       labelArray.append(label2)
-      
-      label3.frame=CGRect(x: 0, y: 750, width: ScreenW, height: 100)
-      label3.font=UIFont.systemFont(ofSize: 50)
-      label3.textAlignment=NSTextAlignment.center
-      label3.backgroundColor=UIColor.gray
-      self.view.addSubview(label3)
-      labelArray.append(label3)
        
       for i in labelArray{
           view.addSubview(i)
@@ -149,7 +137,6 @@ class ViewController: UIViewController {
             board.put(mybtn:mybtn,mycolor:Color.WHITE.rawValue)
         }
         Draw()
-        judgeposition()
     }
 
     
@@ -233,20 +220,7 @@ class ViewController: UIViewController {
                }
            print("\(getblankchecklist)\n")
     }
-    
-    //---------------------------------------------------------
-    //        石が置けるか置けないかのメッセージ描画
-    //---------------------------------------------------------
-    func judgeposition(){
-        let GetNotPosition=board.GetNotPosition()
-        let GetTakePosition=board.GetTakePosition()
-        if(GetNotPosition==8){
-            label3.isHidden = false
-            label3.text=judgefont[0]
-        }else if(GetNotPosition<8 && GetTakePosition==2){
-            //label3を隠す。
-        }
-    }
+
     
     
     

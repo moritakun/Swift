@@ -25,9 +25,6 @@ class Board: UIView{
     var allcnt:Int=64               //盤面の空きはどのぐらいか
 
     var nowOsero:Bool=false         //falseが黒、trueが白
-
-    var notposition:Int=0                   //石が置けない場合の変数
-    var takeposition:Int=0                   //石が置ける場合の変数
     
     var BlankCheckList:[[Int]] = []         //次の人が置けるマス目の座標を格納。
     
@@ -66,7 +63,6 @@ class Board: UIView{
     //---------------------------
     func put(mybtn:OSERO,mycolor:Int){
         var AuthenticityControl : Int = 0         //true,falseの制御
-        notposition=0
         print("置かれた座標X,\(mybtn.frameX):Y,\(mybtn.frameY)")
             //自分を中心とした前後左右斜めに色違いの石があるか
         for i in 0...7{
@@ -74,7 +70,6 @@ class Board: UIView{
             let dy=Judge_Range[i][1]
             let n=Cnt_Change(mybtn: mybtn, x: dx, y: dy, color: mycolor)
             if(n==0){
-                notposition += 1     //置けないマスの時メッセ表示
             }
             else{
                 if(AuthenticityControl == 0){
@@ -86,7 +81,6 @@ class Board: UIView{
                     }
                 }
                 AuthenticityControl += 1
-                takeposition = 2    //置けたマスの時メッセ表示
                 for i in 0...n{
                     square[mybtn.frameY+i*dy][mybtn.frameX+i*dx]=mycolor
                 }
@@ -198,14 +192,6 @@ class Board: UIView{
     
     
     //-----------------------ゲッター-------------------------------------
-    //石が置けないコメントの取得
-    func GetNotPosition()->Int{
-        return notposition
-    }
-    //石が置けるコメントの取得
-    func GetTakePosition()->Int{
-        return takeposition
-    }
     //黒石の数取得
     func GetBlack()->Int{
         return blackcnt

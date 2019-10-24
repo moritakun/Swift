@@ -54,7 +54,7 @@ class ViewController: UIViewController {
     let label1=UILabel()
      let label2 = UILabel()
     let label3 = UILabel()
-    
+    var getblankchecklist:[[Int]]=[]
     
     //画面上に表示するフォント構造体
     let font:[String]=["オセロスタート",           //0
@@ -64,14 +64,14 @@ class ViewController: UIViewController {
       
     
     //置けるか置けないかのコメント構造体
-    let judgefont:String="置けません"
+    let judgefont:[String]=["置けません",         //0
+                            "置いてください"]      //1
 
     
     //------------------------------
     //          オセロ盤初期化
     //------------------------------
     func InitImageView(){
-        //初めのオセロスタート描画
         let ScreenW:CGFloat=view.frame.size.width
         let imgWidth:CGFloat = ScreenW/8
         var cnt:Int=0
@@ -91,6 +91,8 @@ class ViewController: UIViewController {
         LabelInit()
         board.Board_Init()
         Draw()
+        getblankchecklist = board.BlankCheck(mycolor: 1)
+        farstblankchecklist()
     }
     
     
@@ -131,7 +133,7 @@ class ViewController: UIViewController {
       for i in labelArray{
           view.addSubview(i)
       }
-      }
+    }
       
     
     
@@ -160,6 +162,10 @@ class ViewController: UIViewController {
         let getnowosero=board.GetNowOsero()
         let getblack=board.GetBlack()
         let getwhite=board.GetWhite()
+        let getfont=board.GetFont()
+        getblankchecklist=board.blankchecklist()
+   
+        
         var cnt=0
         for y in 0...num{
             for x in 0...num{
@@ -177,15 +183,36 @@ class ViewController: UIViewController {
                 }
                 else{
                 ButtonArray[cnt].setImage(image[Color.BOARD.rawValue], for: .normal)
+                    ButtonArray[cnt].isEnabled = false
                 }
                 cnt+=1
             }
         }
         
+//        let blankchecklistEmpty:Bool
+//           blankchecklistEmpty = getblankchecklist.isEmpty
+//           if(blankchecklistEmpty == false){  //中身が無い。
+//               //同じ人がもう一度石をおく。
+//               print("\(getblankchecklist)")
+//           }
+//           else if(blankchecklistEmpty == true){
+                   for i in 0..<(getblankchecklist.count)
+                   {
+                       let y = getblankchecklist[i][0]
+                       let x = getblankchecklist[i][1]
+                       ButtonArray[y*10+x].isEnabled = true
+                   }
+               print("\(getblankchecklist)")
+//           }
+//           print("\(blankchecklistEmpty)")
+        
         if(!getnowosero){
             label.text=font[1]
         }else{
             label.text=font[2]
+        }
+        if(getfont == 3){
+            label.text=font[3]
         }
 
         label1.text="白:\(getwhite)"
@@ -193,18 +220,19 @@ class ViewController: UIViewController {
         for i in labelArray{
             view.addSubview(i)
         }
-        
-        
-//        let judge:Bool=board.GetNowOsero()
-//         if(!judge){
-//             board.BlankCheck(mycolor:Color.BLACK.rawValue)
-//         }
-//         else{
-//            board.BlankCheck(mycolor:Color.WHITE.rawValue)
-//         }
     }
     
     
+    
+    func farstblankchecklist(){
+        for i in 0..<(getblankchecklist.count)
+               {
+                   let y = getblankchecklist[i][0]
+                   let x = getblankchecklist[i][1]
+                   ButtonArray[y*10+x].isEnabled = true
+               }
+           print("\(getblankchecklist)\n")
+    }
     
     //---------------------------------------------------------
     //        石が置けるか置けないかのメッセージ描画
@@ -214,7 +242,7 @@ class ViewController: UIViewController {
         let GetTakePosition=board.GetTakePosition()
         if(GetNotPosition==8){
             label3.isHidden = false
-            label3.text=judgefont
+            label3.text=judgefont[0]
         }else if(GetNotPosition<8 && GetTakePosition==2){
             //label3を隠す。
         }

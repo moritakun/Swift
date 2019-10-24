@@ -29,6 +29,8 @@ class Board: UIView{
     var notposition:Int=0                   //石が置けない場合の変数
     var takeposition:Int=0                   //石が置ける場合の変数
     
+    var BlankCheckList:[[Int]] = []         //次の人が置けるマス目の座標を格納。
+    
     
     
     //---------------------------
@@ -72,8 +74,7 @@ class Board: UIView{
             let dy=Judge_Range[i][1]
             let n=Cnt_Change(mybtn: mybtn, x: dx, y: dy, color: mycolor)
             if(n==0){
-                notposition += 1
-//              print("そこにはおけない")
+                notposition += 1     //置けないマスの時メッセ表示
             }
             else{
                 if(AuthenticityControl == 0){
@@ -85,15 +86,23 @@ class Board: UIView{
                     }
                 }
                 AuthenticityControl += 1
-                takeposition = 2
-//                print("aa:\(AuthenticityControl)")
+                takeposition = 2    //置けたマスの時メッセ表示
                 for i in 0...n{
                     square[mybtn.frameY+i*dy][mybtn.frameX+i*dx]=mycolor
                 }
             }
         }
-        //盤面全体の空白テェック
-//        BlankCheck(mybtn:mybtn,mycolor:mycolor)
+        
+          //盤面全体の空白チェック
+        if(mycolor == 1){
+            BlankCheckList = BlankCheck(mycolor:Color.WHITE.rawValue)
+        }else if(mycolor == 2){
+            BlankCheckList = BlankCheck(mycolor:Color.BLACK.rawValue)
+        }
+//        print("BlankCheckList全体:\(BlankCheckList)")
+//        print("BlankCheckList数値指定:\(BlankCheckList[0][0])")
+        
+        
         //フォントの変更
         Now_Count()
     }
@@ -129,93 +138,99 @@ class Board: UIView{
     //---------------------------------------------------------------------
     //                    盤面全体の空白チェック
     //---------------------------------------------------------------------
-    func BlankCheck(mycolor:Int){
-        var Blanksquarey : [Int] = []
-        var Blanksquarex : [Int] = []
+    //BOARDの8*8を一つずつチェック
+    func BlankCheck(mycolor:Int)-> [[Int]]{
         
-        //初期値入力
-        for _ in 0...num{
-//            var array:[Int]=[]
-//            array += [0]
-            Blanksquarey += [0]
-            Blanksquarex += [0]
-        }
-        //空白チェック
-        for y in 0...num{
-            for x in 0...num{
-                if(square[y][x] == 0){
-                    Blanksquarey[y] = y
-                    Blanksquarex[x] = x
+        var Blanksquare : [[Int]] = []
         
-                    print("Blanksquare y,\(Blanksquarey[y]):x,\(Blanksquarex[x])")
+        for y in 1..<num{
+            for x in 1..<num{
+                if(self.Blank(x:x, y:y, mycolor:mycolor)){
+                    //現在のmycolorが置ける場所のマス座標が格納される。
+                    Blanksquare += [[y,x]]
                 }
             }
         }
-        
-        func Blank(x:Int, y:Int, color:Int)->Int{
-            for a in 0...7{
-                    var dx=Judge_Range[a][0]
-                    var dy=Judge_Range[a][1]
-                for i in 0...num{
-                     dx=x+dx
-                     dy=y+dy
-                     if(square[dy][dx]==0){  //空白
-                         return 0
-                     }
-                     else if(square[dy][dx]==3){  //範囲外
-                         return 0
-                     }
-                     else if(square[dy][dx]==color){  //範囲内
-                         return i
-                     }
-                 }
-            }
-            return 0
-        }
-            
-        
-        for h in Blanksquarey{
-            for i in Blanksquarex{
-                let blank = Blank(x: Blanksquarex[i], y: Blanksquarey[h], color:mycolor)
-                if(blank != 0){
-                    print("おけます。")
-                }
-                else{
-                    print("置けません。")
-                }
-            }
-        }
+        return Blanksquare
     }
-
+    
+    
+    
+    func Blank(x:Int, y:Int, mycolor:Int)->Bool{
+        //xチェックするマスが白or黒ならばfalse。空白ならば下へ。
+        if(square[y][x] != 0){
+            return false
+        }
+        //空白ならば、、周りの確認へ。
+        //square8*8を順番に見ていって、mycolorでおける場所があるなら。
+        //trueでBlancsquareへ格納する。
+        for i in 0..<8{
+            let dx=Judge_Range[i][0]
+            let dy=Judge_Range[i][1]
+            if(self.count_Blank(x:x, y:y, dx:dx, dy:dy, mycolor:mycolor)>0){
+                return true
+            }
+        }
+        return false
+    }
+    
+    
+    
+    func count_Blank(x:Int, y:Int, dx:Int, dy:Int, mycolor:Int)->Int{
+        var _y:Int = y
+        var _x:Int = x
+        for i in 0..<8{
+            _y = _y+dy
+            _x = _x+dx
+            if(square[_y][_x]==0){  //空白
+                return 0
+            }
+            else if(square[_y][_x]==3){  //範囲外
+                return 0
+            }
+            else if(square[_y][_x]==mycolor){  //範囲内
+                return i
+            }
+        }
+        return 0
+    }
+    
+    
+    
     //-----------------------ゲッター-------------------------------------
-        //石が置けないコメントの取得
-        func GetNotPosition()->Int{
-            return notposition
-        }
-        //石が置けるコメントの取得
-        func GetTakePosition()->Int{
-            return takeposition
-        }
-        //黒石の数取得
-        func GetBlack()->Int{
-            return blackcnt
-        }
-        //白石の数取得
-        func GetWhite()->Int{
-            return whitecnt
-        }
-        //フォント取得
-        func GetFont()->Int{
-            return font
-        }
-        //現在の白か黒か取得
-        func GetNowOsero()->Bool{
-            return nowOsero
-        }
-        //盤面上の石の状態
-        func Return_Color()->[[Int]]{
-            return square
-        }
+    //石が置けないコメントの取得
+    func GetNotPosition()->Int{
+        return notposition
+    }
+    //石が置けるコメントの取得
+    func GetTakePosition()->Int{
+        return takeposition
+    }
+    //黒石の数取得
+    func GetBlack()->Int{
+        return blackcnt
+    }
+    //白石の数取得
+    func GetWhite()->Int{
+        return whitecnt
+    }
+    //フォント取得
+    func GetFont()->Int{
+        return font
+    }
+    //現在の白か黒か取得
+    func GetNowOsero()->Bool{
+        return nowOsero
+    }
+    //盤面上の石の状態
+    func Return_Color()->[[Int]]{
+        return square
+    }
+    
+    //置けないマス目の取得
+    func blankchecklist()->[[Int]]{
+        return BlankCheckList
+    }
         
         //-----------------------終了-------------------------------------
         

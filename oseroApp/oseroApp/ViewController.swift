@@ -18,14 +18,12 @@ var image: [UIImage] = [
     UIImage(named:"white")!          //白色オセロ
 ]
 
-
 enum Color:Int{
     case BOARD = 0
     case BLACK=1
     case WHITE=2
     case NULL=3
 }
-
 
 //オセロクラス
 class OSERO:UIButton{
@@ -45,6 +43,9 @@ class OSERO:UIButton{
 
 
 
+
+
+
 class ViewController: UIViewController {
      var button=UIButton()
      var ButtonArray:[UIButton]=[]
@@ -57,12 +58,15 @@ class ViewController: UIViewController {
     var getblankchecklist:[[Int]]=[]
     
     //画面上に表示するフォント構造体
-    let font:[String]=["オセロスタート",           //0
-                         "黒の(_・ω・)_ﾊﾞｧﾝ",      //1
-                         "白の(_・ω・)_ﾊﾞｧﾝ",       //2
-                         "終了|ω･) "]             //3
-
-
+    let font:[String]=["黒の(_・ω・)_ﾊﾞｧﾝ",      //0
+                         "白の(_・ω・)_ﾊﾞｧﾝ"]       //1
+  let FinishFont:String = "終了|ω･) "
+    
+    
+    
+    
+    
+    
     
     //------------------------------
     //          オセロ盤初期化
@@ -89,6 +93,10 @@ class ViewController: UIViewController {
         Draw()
         farstblankchecklist()
     }
+    
+    
+    
+    
     
     
     
@@ -126,11 +134,16 @@ class ViewController: UIViewController {
       
     
     
+    
+    
+    
+    
     //-----------------------------------
     //         オセロ盤タップ
     //-----------------------------------
     @objc func pushed(mybtn:OSERO){
-        let judge:Bool=board.GetNowOsero()
+        var judge:Bool=board.GetNowOseroColor()
+        judge = keepturn
         if(!judge){
             board.put(mybtn:mybtn,mycolor:Color.BLACK.rawValue)
         }
@@ -143,16 +156,17 @@ class ViewController: UIViewController {
 
     
 
+    
+    
+    
+    
     //-----------------------------------
     //      描画
     //-----------------------------------
     func Draw(){
         let colorJudge=board.Return_Color()
-        var getnowosero=board.GetNowOsero()
         let getblack=board.GetBlack()
         let getwhite=board.GetWhite()
-        let getfont=board.GetFont()
-        getblankchecklist=board.blankchecklist()
        
         var cnt=0
         for y in 0...num{
@@ -177,22 +191,13 @@ class ViewController: UIViewController {
             }
         }
         
-            
-        if(!getnowosero){
-            label.text=font[1]
-        }
-        else{
-            label.text=font[2]
-        }
-        if(getfont == 3){
-            label.text=font[3]
-        }
-        
         label1.text="白:\(getwhite)"
         label2.text="黒:\(getblack)"
-        for i in labelArray{
-            view.addSubview(i)
-        }
+//        for i in labelArray{
+//            view.addSubview(i)
+//        }
+        view.addSubview(label1)
+        view.addSubview(label2)
     }
         
     
@@ -200,25 +205,31 @@ class ViewController: UIViewController {
     
     
 
+    
+    //----------------------------------------------------
+    //                   blankの描画
+    //----------------------------------------------------
     func blankchecklistDraw(){
-        var getnowosero=board.GetNowOsero()
+        var getnowoserocolor=board.GetNowOseroColor()
+        let getfinishfont=board.GetFinishFont()
+           getblankchecklist=board.blankchecklist()
         
         let blankchecklistEmpty:Bool
                blankchecklistEmpty = getblankchecklist.isEmpty
                if(blankchecklistEmpty == true){  //要素が無い(もう一度同じ石を置く)
                        //次の要素が無いなら、また現在のblankcheckをする
-                       //!getnowosero(false:黒)なら、(true:白)をチェック
-                   if(!getnowosero){
+                       //!getnowoserocolor(false:黒)なら、(true:白)をチェック
+                   if(!getnowoserocolor){
                        getblankchecklist = board.BlankCheck(mycolor: 2)
                        for i in 0..<(getblankchecklist.count){
                            let y = getblankchecklist[i][0]
                            let x = getblankchecklist[i][1]
                            ButtonArray[y*10+x].isEnabled = true
                        }
-                       getnowosero = true
-                       label.text=font[2]
+                       getnowoserocolor = true
+                       label.text=font[1]
                    }
-                   //!getnowosero(true:白)なら、(false:黒)をチェック
+                   //!getnowoserocolor(true:白)なら、(false:黒)をチェック
                    else{
                        getblankchecklist = board.BlankCheck(mycolor: 1)
                        for i in 0..<(getblankchecklist.count){
@@ -226,11 +237,11 @@ class ViewController: UIViewController {
                            let x = getblankchecklist[i][1]
                            ButtonArray[y*10+x].isEnabled = true
                        }
-                       getnowosero = false
-                       label.text=font[1]
+                       getnowoserocolor = false
+                       label.text=font[0]
                       print("getblankchecklist-true:\(getblankchecklist),\(blankchecklistEmpty)")
                    }
-                   keepturn = getnowosero
+                   keepturn = getnowoserocolor
 //                   print("getblankchecklist-true:\(getblankchecklist),\(blankchecklistEmpty)")
                }
                else if(blankchecklistEmpty == false){//要素がある
@@ -240,8 +251,21 @@ class ViewController: UIViewController {
                        ButtonArray[y*10+x].isEnabled = true
                    }
                    print("getblankchecklist-false:\(getblankchecklist),\(blankchecklistEmpty)")
+                    
+                if(!getnowoserocolor){
+                    label.text=font[0]
+                }
+                else{
+                    label.text=font[1]
+                }
+                if(getfinishfont == true){
+                    label.text = FinishFont
+                }
                }
+              view.addSubview(label)
     }
+    
+    
     
     
     
@@ -251,6 +275,9 @@ class ViewController: UIViewController {
     //           blankchecklistの初期化
     //----------------------------------------------------------------
     func farstblankchecklist(){
+        let getblack=board.GetBlack()
+        let getwhite=board.GetWhite()
+        
         getblankchecklist = board.BlankCheck(mycolor: 1)
         for i in 0..<(getblankchecklist.count)
                {
@@ -258,8 +285,17 @@ class ViewController: UIViewController {
                    let x = getblankchecklist[i][1]
                    ButtonArray[y*10+x].isEnabled = true
                }
-           print("\(getblankchecklist)\n")
+        
+        label.text=font[0]
+        label1.text="白:\(getwhite)"
+        label2.text="黒:\(getblack)"
+        view.addSubview(label)
+        view.addSubview(label1)
+        view.addSubview(label2)
+        print("\(getblankchecklist)\n")
     }
+    
+    
     
     
     
@@ -270,4 +306,9 @@ class ViewController: UIViewController {
         InitImageView()
         // Do any additional setup after loading the view.
     }
+    
+    
+    
+    
+    
 }

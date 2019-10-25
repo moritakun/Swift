@@ -21,10 +21,10 @@ class Board: UIView{
     var blackcnt:Int=0              //白の石の数
     var whitecnt:Int=0              //黒の石の数
     
-    var font : Int = 0
+    var finishfont:Bool = false     //ゲームが終わった時のメッセ
     var allcnt:Int=64               //盤面の空きはどのぐらいか
 
-    var nowOsero:Bool=false         //falseが黒、trueが白
+    var nowOseroColor:Bool=false         //falseが黒、trueが白
     
     var BlankCheckList:[[Int]] = []         //次の人が置けるマス目の座標を格納。
     
@@ -42,19 +42,18 @@ class Board: UIView{
             square+=[array]
         }
         
-        //--------黒連続する配置-------
                 square[1][1]=2
                 square[1][3]=2
                 square[1][4]=2
                 square[1][6]=2
-        
+
                 square[2][1]=2
                 square[2][2]=2
                 square[2][3]=2
                 square[2][4]=2
                 square[2][5]=2
                 square[2][6]=2
-        
+
                 square[3][1]=2
                 square[3][2]=2
                 square[3][3]=2
@@ -63,7 +62,7 @@ class Board: UIView{
                 square[3][6]=2
                 square[3][7]=2
                 square[3][8]=2
-        
+
                 square[4][1]=2
                 square[4][2]=2
                 square[4][3]=2
@@ -71,7 +70,7 @@ class Board: UIView{
                 square[4][5]=2
                 square[4][6]=1
                 square[4][7]=2
-        
+
                 square[5][1]=2
                 square[5][2]=2
                 square[5][3]=2
@@ -79,7 +78,7 @@ class Board: UIView{
                 square[5][5]=1
                 square[5][6]=2
                 square[5][7]=2
-        
+
                 square[6][1]=2
                 square[6][2]=2
                 square[6][3]=2
@@ -87,19 +86,19 @@ class Board: UIView{
                 square[6][5]=2
                 square[6][6]=2
                 square[6][7]=2
-        
+
                 square[7][1]=2
                 square[7][3]=2
                 square[7][4]=2
-        
+
                 square[8][3]=2
         
         
         //一番最初の状態生成
-        square[4][4]=2
-        square[5][5]=2
-        square[5][4]=1
-        square[4][5]=1
+//        square[4][4]=2
+//        square[5][5]=2
+//        square[5][4]=1
+//        square[4][5]=1
 
         //番兵
         for i in 0...num{
@@ -112,12 +111,16 @@ class Board: UIView{
     
     
     
+    
+    
+    
+    
+    
     //---------------------------
     // 石が置かれた時
     //---------------------------
     func put(mybtn:OSERO,mycolor:Int){
-        var AuthenticityControl : Int = 0         //true,falseの制御
-        print("置かれた座標X,\(mybtn.frameX):Y,\(mybtn.frameY)")
+        print("置かれた座標 X\(mybtn.frameX) : Y\(mybtn.frameY)")
             //自分を中心とした前後左右斜めに色違いの石があるか
         for i in 0...7{
             let dx=Judge_Range[i][0]
@@ -126,16 +129,8 @@ class Board: UIView{
             if(n==0){
             }
             else{
-                //次の色へチェンジ(nowOsero)
-                if(AuthenticityControl == 0){
-                    if(!nowOsero){
-                        nowOsero=true
-                    }
-                    else{
-                        nowOsero=false
-                    }
-                }
-                AuthenticityControl += 1
+                //ここでnowOseroColorのチェンジ関数を呼ぶ
+                OseroColorControl()
                 for i in 0...n{
                     square[mybtn.frameY+i*dy][mybtn.frameX+i*dx]=mycolor
                 }
@@ -151,10 +146,12 @@ class Board: UIView{
 //        print("BlankCheckList全体:\(BlankCheckList)")
 //        print("BlankCheckList数値指定:\(BlankCheckList[0][0])")
         
-        
         //フォントの変更
         Now_Count()
     }
+    
+    
+    
     
     
     
@@ -184,6 +181,32 @@ class Board: UIView{
     
     
     
+    
+    
+    
+    
+    //------------------------------------------------
+    //            nowOseroColorの変更
+    //------------------------------------------------
+    func OseroColorControl(){
+        var nowOseroColorControl : Int = 0         //true,falseの制御
+        if(nowOseroColorControl == 0){
+            if(!nowOseroColor){
+                nowOseroColor=true
+            }
+            else{
+                nowOseroColor=false
+            }
+        }
+        nowOseroColorControl += 1
+    }
+    
+    
+    
+    
+    
+    
+    
     //---------------------------------------------------------------------
     //                    盤面全体の空白チェック
     //---------------------------------------------------------------------
@@ -204,7 +227,6 @@ class Board: UIView{
     }
     
     
-    
     func Blank(x:Int, y:Int, mycolor:Int)->Bool{
         //xチェックするマスが白or黒ならばfalse。空白ならば下へ。
         if(square[y][x] != 0){
@@ -222,7 +244,6 @@ class Board: UIView{
         }
         return false
     }
-    
     
     
     func count_Blank(x:Int, y:Int, dx:Int, dy:Int, mycolor:Int)->Int{
@@ -246,6 +267,11 @@ class Board: UIView{
     
     
     
+    
+    
+    
+    
+    
     //-----------------------ゲッター-------------------------------------
     //黒石の数取得
     func GetBlack()->Int{
@@ -256,25 +282,28 @@ class Board: UIView{
         return whitecnt
     }
     //フォント取得
-    func GetFont()->Int{
-        return font
+    func GetFinishFont()->Bool{
+        return finishfont
     }
     //現在の白か黒か取得
-    func GetNowOsero()->Bool{
-        return nowOsero
+    func GetNowOseroColor()->Bool{
+        return nowOseroColor
     }
     //盤面上の石の状態
     func Return_Color()->[[Int]]{
         return square
     }
     
-    //置けないマス目の取得
+    //置けるマス目の取得
     func blankchecklist()->[[Int]]{
         return BlankCheckList
     }
         
         //-----------------------終了-------------------------------------
         
+    
+    
+    
     
     
     
@@ -297,8 +326,12 @@ class Board: UIView{
         }
         allcnt = allcnt-(blackcnt+whitecnt)
         if(allcnt==0){
-            font=3
+            finishfont=true
         }
     }
+    
+    
+    
+    
 
 }

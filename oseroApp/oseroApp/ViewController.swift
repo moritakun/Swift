@@ -24,6 +24,9 @@ enum Color:Int{
     case NULL=3
 }
 
+//var player_Color:Int = Color(rawValue: 1)!.rawValue
+var player_Color:Int = 1
+
 //オセロクラス
 class OSERO:UIButton{
     var frameX:Int              //Xの座標
@@ -56,10 +59,11 @@ class ViewController: UIViewController {
      let label2 = UILabel()
     var getblankchecklist:[[Int]]=[]
     
-    //画面上に表示するフォント構造体
+//    画面上に表示するフォント構造体
     let font:[String]=["黒の(_・ω・)_ﾊﾞｧﾝ",      //0
                          "白の(_・ω・)_ﾊﾞｧﾝ"]       //1
-  let FinishFont:String = "終了|ω･) "
+    
+    let FinishFont:String = "終了|ω･) "
     
     
     
@@ -67,9 +71,9 @@ class ViewController: UIViewController {
     
     
     
-    //------------------------------
-    //          オセロ盤初期化
-    //------------------------------
+//    ------------------------------
+//              オセロ盤初期化
+//    ------------------------------
     func InitImageView(){
         let ScreenW:CGFloat=view.frame.size.width
         let imgWidth:CGFloat = ScreenW/8
@@ -80,7 +84,7 @@ class ViewController: UIViewController {
                 let posy: CGFloat=CGFloat(50*(y-1))
                 let button : UIButton = OSERO(frameX: x, frameY: y, cnt: cnt, frame: CGRect(x: posx+5, y: posy+175, width: imgWidth, height: imgWidth))
                 button.addTarget(self, action: #selector(ViewController.pushed), for: .touchUpInside)
-                //resetButtonの表示
+//                resetButtonの表示
                 self.view.addSubview(button)
                 ButtonArray.append(button)
                 ButtonArray[cnt].setImage(image[0],for:.normal)
@@ -99,9 +103,9 @@ class ViewController: UIViewController {
     
     
     
-      //------------------------
-      //画面表示用フォントの初期化
-      //-------------------------
+//      ------------------------
+//      画面表示用フォントの初期化
+//      -------------------------
     func LabelInit(){
       let ScreenW:CGFloat=view.frame.size.width
       
@@ -137,13 +141,11 @@ class ViewController: UIViewController {
     
     
     
-    //-----------------------------------
-    //         オセロ盤タップ
-    //-----------------------------------
+//    -----------------------------------
+//             オセロ盤タップ
+//    -----------------------------------
     @objc func pushed(mybtn:OSERO){
-        let judge:Bool=board.GetNextOseroColor()
-        print("judge:\(judge)")
-        if(!judge){
+        if(player_Color == 1){
             //mycolorをtrue&falseで渡したい。未実装
             board.put(mybtn:mybtn,mycolor:Color.BLACK.rawValue)
         }
@@ -160,9 +162,9 @@ class ViewController: UIViewController {
     
     
     
-    //-----------------------------------
-    //      描画
-    //-----------------------------------
+//    -----------------------------------
+//          描画
+//    -----------------------------------
     func Draw(){
         let colorJudge=board.Return_Color()
         let getblack=board.GetBlack()
@@ -180,8 +182,8 @@ class ViewController: UIViewController {
                     ButtonArray[cnt].isEnabled=false
                 }
                 else if(colorJudge[y][x]==Color.NULL.rawValue){
-                //範囲外判定
-                ButtonArray[cnt].isHidden=true
+//                範囲外判定
+                    ButtonArray[cnt].isHidden=true
                 }
                 else{
                     ButtonArray[cnt].setImage(image[Color.BOARD.rawValue], for: .normal)
@@ -193,9 +195,6 @@ class ViewController: UIViewController {
         
         label1.text="白:\(getwhite)"
         label2.text="黒:\(getblack)"
-//        for i in labelArray{
-//            view.addSubview(i)
-//        }
         view.addSubview(label1)
         view.addSubview(label2)
     }
@@ -206,64 +205,68 @@ class ViewController: UIViewController {
     
 
     
-    //----------------------------------------------------
-    //                   blankの描画
-    //----------------------------------------------------
+//    ----------------------------------------------------
+//                       blankの描画
+//    ----------------------------------------------------
     func blankchecklistDraw(){
-        var getnextoserocolor=board.GetNextOseroColor()
-        print("getnowoserocolor:\(getnextoserocolor)")
         let getfinishfont=board.GetFinishFont()
-           getblankchecklist=board.blankchecklist()
         
-        let blankchecklistEmpty:Bool
-               blankchecklistEmpty = getblankchecklist.isEmpty
-               if(blankchecklistEmpty == true){  //要素が無い(もう一度同じ石を置く)
-                       //次の要素が無いなら、また現在のblankcheckをする
-                       //!getnextoserocolor(false:黒)なら、(true:白)をチェック
-                   if(!getnextoserocolor){
-                       getblankchecklist = board.BlankCheck(mycolor: 2)
-                       for i in 0..<(getblankchecklist.count){
-                           let y = getblankchecklist[i][0]
-                           let x = getblankchecklist[i][1]
-                           ButtonArray[y*10+x].isEnabled = true
-                       }
-                       getnextoserocolor = true
-                       label.text=font[1]
-                   }
-                   //!getnextoserocolor(true:白)なら、(false:黒)をチェック
-                   else{
-                       getblankchecklist = board.BlankCheck(mycolor: 1)
-                       for i in 0..<(getblankchecklist.count){
-                           let y = getblankchecklist[i][0]
-                           let x = getblankchecklist[i][1]
-                           ButtonArray[y*10+x].isEnabled = true
-                       }
-                       getnextoserocolor = false
-                    board.OseroColorControl(nextoserocolor: false)
-                    
-                       label.text=font[0]
-                      print("getblankchecklist-true:\(getblankchecklist)\n")
-                   }
-               }
-               else if(blankchecklistEmpty == false){//要素がある
-                   for i in 0..<(getblankchecklist.count){
-                       let y = getblankchecklist[i][0]
-                       let x = getblankchecklist[i][1]
-                       ButtonArray[y*10+x].isEnabled = true
-                   }
-                   print("getblankchecklist-false:\(getblankchecklist)\n")
-                    
-                if(!getnextoserocolor){
-                    label.text=font[0]
+        if(player_Color == 1){  //現在黒
+            let WHITEavailablelist = board.BlankCheck(mycolor:Color.WHITE.rawValue)  //白チェック
+                
+            let WHITEavailablelistEmpty = WHITEavailablelist.isEmpty
+            if(WHITEavailablelistEmpty == true){  //要素が無い
+                let BLACKavailablelist = board.BlankCheck(mycolor:Color.BLACK.rawValue)  //黒再チェック
+                for i in 0..<(BLACKavailablelist.count){
+                    let y = BLACKavailablelist[i][0]
+                    let x = BLACKavailablelist[i][1]
+                    ButtonArray[y*10+x].isEnabled = true
+                    player_Color = 1
                 }
-                else{
-                    label.text=font[1]
+            }
+            else{  //要素有る
+                for i in 0..<(WHITEavailablelist.count){
+                    let y = WHITEavailablelist[i][0]
+                    let x = WHITEavailablelist[i][1]
+                    ButtonArray[y*10+x].isEnabled = true
+                    player_Color = 2
                 }
-                if(getfinishfont == true){
-                    label.text = FinishFont
+            }
+        }
+        else if(player_Color == 2){  //現在白
+            let BLACKavailablelist = board.BlankCheck(mycolor:Color.BLACK.rawValue)  //黒チェック
+            
+            let BLACKavailablelistEmpty = BLACKavailablelist.isEmpty
+            if(BLACKavailablelistEmpty == true){  //要素が無い
+                let WHITEavailablelist = board.BlankCheck(mycolor:Color.WHITE.rawValue)  //白再チェック
+                for i in 0..<(WHITEavailablelist.count){
+                    let y = WHITEavailablelist[i][0]
+                    let x = WHITEavailablelist[i][1]
+                    ButtonArray[y*10+x].isEnabled = true
+                    player_Color = 2
                 }
-               }
-              view.addSubview(label)
+            }
+            else{  //要素有る
+                for i in 0..<(BLACKavailablelist.count){
+                    let y = BLACKavailablelist[i][0]
+                    let x = BLACKavailablelist[i][1]
+                    ButtonArray[y*10+x].isEnabled = true
+                    player_Color = 1
+                }
+            }
+        }
+        
+        if(player_Color == 1){
+            label.text=font[0]
+        }
+        else{
+            label.text=font[1]
+        }
+        
+        if(getfinishfont == true){
+            label.text = FinishFont
+        }
+        view.addSubview(label)
     }
     
     
@@ -272,20 +275,19 @@ class ViewController: UIViewController {
     
     
     
-    //----------------------------------------------------------------
-    //           blankchecklistの初期化
-    //----------------------------------------------------------------
+//    ----------------------------------------------------------------
+//               blankchecklistの初期化
+//    ----------------------------------------------------------------
     func farstblankchecklist(){
         let getblack=board.GetBlack()
         let getwhite=board.GetWhite()
         
         getblankchecklist = board.BlankCheck(mycolor: 1)
-        for i in 0..<(getblankchecklist.count)
-               {
-                   let y = getblankchecklist[i][0]
-                   let x = getblankchecklist[i][1]
-                   ButtonArray[y*10+x].isEnabled = true
-               }
+        for i in 0..<(getblankchecklist.count){
+            let y = getblankchecklist[i][0]
+            let x = getblankchecklist[i][1]
+            ButtonArray[y*10+x].isEnabled = true
+        }
         
         label.text=font[0]
         label1.text="白:\(getwhite)"
@@ -301,11 +303,12 @@ class ViewController: UIViewController {
     
     
     
-    
+//        ----------------------------------------------------------------
+//                       初めの呼び出し関数
+//        ----------------------------------------------------------------
     override func viewDidLoad(){
         super.viewDidLoad()
         InitImageView()
-        // Do any additional setup after loading the view.
     }
     
     

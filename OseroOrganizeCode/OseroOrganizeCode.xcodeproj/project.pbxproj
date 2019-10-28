@@ -1,0 +1,599 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		EDBDE0B42366859500775621 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBDE0B32366859500775621 /* AppDelegate.swift */; };
+		EDBDE0B62366859500775621 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBDE0B52366859500775621 /* SceneDelegate.swift */; };
+		EDBDE0B82366859500775621 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBDE0B72366859500775621 /* ViewController.swift */; };
+		EDBDE0BB2366859500775621 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDBDE0B92366859500775621 /* Main.storyboard */; };
+		EDBDE0BD2366859B00775621 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDBDE0BC2366859B00775621 /* Assets.xcassets */; };
+		EDBDE0C02366859B00775621 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDBDE0BE2366859B00775621 /* LaunchScreen.storyboard */; };
+		EDBDE0CB2366859C00775621 /* OseroOrganizeCodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBDE0CA2366859C00775621 /* OseroOrganizeCodeTests.swift */; };
+		EDBDE0D62366859C00775621 /* OseroOrganizeCodeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBDE0D52366859C00775621 /* OseroOrganizeCodeUITests.swift */; };
+		EDBDE0E4236685D200775621 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBDE0E3236685D200775621 /* Board.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EDBDE0C72366859C00775621 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EDBDE0A82366859500775621 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EDBDE0AF2366859500775621;
+			remoteInfo = OseroOrganizeCode;
+		};
+		EDBDE0D22366859C00775621 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EDBDE0A82366859500775621 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EDBDE0AF2366859500775621;
+			remoteInfo = OseroOrganizeCode;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		EDBDE0B02366859500775621 /* OseroOrganizeCode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OseroOrganizeCode.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EDBDE0B32366859500775621 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		EDBDE0B52366859500775621 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		EDBDE0B72366859500775621 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		EDBDE0BA2366859500775621 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		EDBDE0BC2366859B00775621 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EDBDE0BF2366859B00775621 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		EDBDE0C12366859B00775621 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EDBDE0C62366859C00775621 /* OseroOrganizeCodeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OseroOrganizeCodeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EDBDE0CA2366859C00775621 /* OseroOrganizeCodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OseroOrganizeCodeTests.swift; sourceTree = "<group>"; };
+		EDBDE0CC2366859C00775621 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EDBDE0D12366859C00775621 /* OseroOrganizeCodeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OseroOrganizeCodeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EDBDE0D52366859C00775621 /* OseroOrganizeCodeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OseroOrganizeCodeUITests.swift; sourceTree = "<group>"; };
+		EDBDE0D72366859C00775621 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EDBDE0E3236685D200775621 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EDBDE0AD2366859500775621 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EDBDE0C32366859C00775621 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EDBDE0CE2366859C00775621 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EDBDE0A72366859500775621 = {
+			isa = PBXGroup;
+			children = (
+				EDBDE0B22366859500775621 /* OseroOrganizeCode */,
+				EDBDE0C92366859C00775621 /* OseroOrganizeCodeTests */,
+				EDBDE0D42366859C00775621 /* OseroOrganizeCodeUITests */,
+				EDBDE0B12366859500775621 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EDBDE0B12366859500775621 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EDBDE0B02366859500775621 /* OseroOrganizeCode.app */,
+				EDBDE0C62366859C00775621 /* OseroOrganizeCodeTests.xctest */,
+				EDBDE0D12366859C00775621 /* OseroOrganizeCodeUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EDBDE0B22366859500775621 /* OseroOrganizeCode */ = {
+			isa = PBXGroup;
+			children = (
+				EDBDE0B32366859500775621 /* AppDelegate.swift */,
+				EDBDE0B52366859500775621 /* SceneDelegate.swift */,
+				EDBDE0B72366859500775621 /* ViewController.swift */,
+				EDBDE0E3236685D200775621 /* Board.swift */,
+				EDBDE0B92366859500775621 /* Main.storyboard */,
+				EDBDE0BC2366859B00775621 /* Assets.xcassets */,
+				EDBDE0BE2366859B00775621 /* LaunchScreen.storyboard */,
+				EDBDE0C12366859B00775621 /* Info.plist */,
+			);
+			path = OseroOrganizeCode;
+			sourceTree = "<group>";
+		};
+		EDBDE0C92366859C00775621 /* OseroOrganizeCodeTests */ = {
+			isa = PBXGroup;
+			children = (
+				EDBDE0CA2366859C00775621 /* OseroOrganizeCodeTests.swift */,
+				EDBDE0CC2366859C00775621 /* Info.plist */,
+			);
+			path = OseroOrganizeCodeTests;
+			sourceTree = "<group>";
+		};
+		EDBDE0D42366859C00775621 /* OseroOrganizeCodeUITests */ = {
+			isa = PBXGroup;
+			children = (
+				EDBDE0D52366859C00775621 /* OseroOrganizeCodeUITests.swift */,
+				EDBDE0D72366859C00775621 /* Info.plist */,
+			);
+			path = OseroOrganizeCodeUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EDBDE0AF2366859500775621 /* OseroOrganizeCode */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EDBDE0DA2366859C00775621 /* Build configuration list for PBXNativeTarget "OseroOrganizeCode" */;
+			buildPhases = (
+				EDBDE0AC2366859500775621 /* Sources */,
+				EDBDE0AD2366859500775621 /* Frameworks */,
+				EDBDE0AE2366859500775621 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OseroOrganizeCode;
+			productName = OseroOrganizeCode;
+			productReference = EDBDE0B02366859500775621 /* OseroOrganizeCode.app */;
+			productType = "com.apple.product-type.application";
+		};
+		EDBDE0C52366859C00775621 /* OseroOrganizeCodeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EDBDE0DD2366859C00775621 /* Build configuration list for PBXNativeTarget "OseroOrganizeCodeTests" */;
+			buildPhases = (
+				EDBDE0C22366859C00775621 /* Sources */,
+				EDBDE0C32366859C00775621 /* Frameworks */,
+				EDBDE0C42366859C00775621 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EDBDE0C82366859C00775621 /* PBXTargetDependency */,
+			);
+			name = OseroOrganizeCodeTests;
+			productName = OseroOrganizeCodeTests;
+			productReference = EDBDE0C62366859C00775621 /* OseroOrganizeCodeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		EDBDE0D02366859C00775621 /* OseroOrganizeCodeUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EDBDE0E02366859C00775621 /* Build configuration list for PBXNativeTarget "OseroOrganizeCodeUITests" */;
+			buildPhases = (
+				EDBDE0CD2366859C00775621 /* Sources */,
+				EDBDE0CE2366859C00775621 /* Frameworks */,
+				EDBDE0CF2366859C00775621 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EDBDE0D32366859C00775621 /* PBXTargetDependency */,
+			);
+			name = OseroOrganizeCodeUITests;
+			productName = OseroOrganizeCodeUITests;
+			productReference = EDBDE0D12366859C00775621 /* OseroOrganizeCodeUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EDBDE0A82366859500775621 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1120;
+				LastUpgradeCheck = 1120;
+				ORGANIZATIONNAME = "森田裕";
+				TargetAttributes = {
+					EDBDE0AF2366859500775621 = {
+						CreatedOnToolsVersion = 11.2;
+					};
+					EDBDE0C52366859C00775621 = {
+						CreatedOnToolsVersion = 11.2;
+						TestTargetID = EDBDE0AF2366859500775621;
+					};
+					EDBDE0D02366859C00775621 = {
+						CreatedOnToolsVersion = 11.2;
+						TestTargetID = EDBDE0AF2366859500775621;
+					};
+				};
+			};
+			buildConfigurationList = EDBDE0AB2366859500775621 /* Build configuration list for PBXProject "OseroOrganizeCode" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EDBDE0A72366859500775621;
+			productRefGroup = EDBDE0B12366859500775621 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EDBDE0AF2366859500775621 /* OseroOrganizeCode */,
+				EDBDE0C52366859C00775621 /* OseroOrganizeCodeTests */,
+				EDBDE0D02366859C00775621 /* OseroOrganizeCodeUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EDBDE0AE2366859500775621 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EDBDE0C02366859B00775621 /* LaunchScreen.storyboard in Resources */,
+				EDBDE0BD2366859B00775621 /* Assets.xcassets in Resources */,
+				EDBDE0BB2366859500775621 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EDBDE0C42366859C00775621 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EDBDE0CF2366859C00775621 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EDBDE0AC2366859500775621 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EDBDE0B82366859500775621 /* ViewController.swift in Sources */,
+				EDBDE0B42366859500775621 /* AppDelegate.swift in Sources */,
+				EDBDE0E4236685D200775621 /* Board.swift in Sources */,
+				EDBDE0B62366859500775621 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EDBDE0C22366859C00775621 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EDBDE0CB2366859C00775621 /* OseroOrganizeCodeTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EDBDE0CD2366859C00775621 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EDBDE0D62366859C00775621 /* OseroOrganizeCodeUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EDBDE0C82366859C00775621 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EDBDE0AF2366859500775621 /* OseroOrganizeCode */;
+			targetProxy = EDBDE0C72366859C00775621 /* PBXContainerItemProxy */;
+		};
+		EDBDE0D32366859C00775621 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EDBDE0AF2366859500775621 /* OseroOrganizeCode */;
+			targetProxy = EDBDE0D22366859C00775621 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		EDBDE0B92366859500775621 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EDBDE0BA2366859500775621 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		EDBDE0BE2366859B00775621 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EDBDE0BF2366859B00775621 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		EDBDE0D82366859C00775621 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		EDBDE0D92366859C00775621 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EDBDE0DB2366859C00775621 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9WXQ27SLSD;
+				INFOPLIST_FILE = OseroOrganizeCode/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = morita.OseroOrganizeCode;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EDBDE0DC2366859C00775621 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9WXQ27SLSD;
+				INFOPLIST_FILE = OseroOrganizeCode/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = morita.OseroOrganizeCode;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		EDBDE0DE2366859C00775621 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9WXQ27SLSD;
+				INFOPLIST_FILE = OseroOrganizeCodeTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = morita.OseroOrganizeCodeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OseroOrganizeCode.app/OseroOrganizeCode";
+			};
+			name = Debug;
+		};
+		EDBDE0DF2366859C00775621 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9WXQ27SLSD;
+				INFOPLIST_FILE = OseroOrganizeCodeTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = morita.OseroOrganizeCodeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OseroOrganizeCode.app/OseroOrganizeCode";
+			};
+			name = Release;
+		};
+		EDBDE0E12366859C00775621 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9WXQ27SLSD;
+				INFOPLIST_FILE = OseroOrganizeCodeUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = morita.OseroOrganizeCodeUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = OseroOrganizeCode;
+			};
+			name = Debug;
+		};
+		EDBDE0E22366859C00775621 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9WXQ27SLSD;
+				INFOPLIST_FILE = OseroOrganizeCodeUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = morita.OseroOrganizeCodeUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = OseroOrganizeCode;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EDBDE0AB2366859500775621 /* Build configuration list for PBXProject "OseroOrganizeCode" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EDBDE0D82366859C00775621 /* Debug */,
+				EDBDE0D92366859C00775621 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EDBDE0DA2366859C00775621 /* Build configuration list for PBXNativeTarget "OseroOrganizeCode" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EDBDE0DB2366859C00775621 /* Debug */,
+				EDBDE0DC2366859C00775621 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EDBDE0DD2366859C00775621 /* Build configuration list for PBXNativeTarget "OseroOrganizeCodeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EDBDE0DE2366859C00775621 /* Debug */,
+				EDBDE0DF2366859C00775621 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EDBDE0E02366859C00775621 /* Build configuration list for PBXNativeTarget "OseroOrganizeCodeUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EDBDE0E12366859C00775621 /* Debug */,
+				EDBDE0E22366859C00775621 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EDBDE0A82366859500775621 /* Project object */;
+}

@@ -24,7 +24,8 @@ class Board: UIView{
     var finishfont:Bool = false     //ゲームが終わった時のメッセ
     var allcnt:Int=64               //盤面の空きはどのぐらいか
 
-    var nowOseroColor:Bool=false         //falseが黒、trueが白
+    var nextOseroColor:Bool=false         //falseが黒、trueが白
+    var nextOseroColorControl : Int = 0         //nextOseroColorのBoolの制御
     
     var BlankCheckList:[[Int]] = []         //次の人が置けるマス目の座標を格納。
     
@@ -42,65 +43,77 @@ class Board: UIView{
             square+=[array]
         }
         
-//                square[1][1]=2
-//                square[1][3]=2
-//                square[1][4]=2
-//                square[1][6]=2
-//
-//                square[2][1]=2
-//                square[2][2]=2
-//                square[2][3]=2
-//                square[2][4]=2
-//                square[2][5]=2
-//                square[2][6]=2
-//
-//                square[3][1]=2
-//                square[3][2]=2
-//                square[3][3]=2
-//                square[3][4]=2
-//                square[3][5]=1
-//                square[3][6]=2
-//                square[3][7]=2
-//                square[3][8]=2
-//
-//                square[4][1]=2
-//                square[4][2]=2
-//                square[4][3]=2
-//                square[4][4]=2
-//                square[4][5]=2
-//                square[4][6]=1
-//                square[4][7]=2
-//
-//                square[5][1]=2
-//                square[5][2]=2
-//                square[5][3]=2
-//                square[5][4]=1
-//                square[5][5]=1
-//                square[5][6]=2
-//                square[5][7]=2
-//
-//                square[6][1]=2
-//                square[6][2]=2
-//                square[6][3]=2
-//                square[6][4]=2
-//                square[6][5]=2
-//                square[6][6]=2
-//                square[6][7]=2
-//
-//                square[7][1]=2
-//                square[7][3]=2
-//                square[7][4]=2
-//
-//                square[8][3]=2
+        //黒が連続する場合
+                square[1][1]=2
+                square[1][3]=2
+                square[1][4]=2
+                square[1][6]=2
 
-        //二箇所ひっくり返る時
-        square[4][4]=2
-        square[4][5]=1
-        square[5][4]=1
-        square[5][5]=2
-        square[6][5]=1
-        square[6][6]=2
+                square[2][1]=2
+                square[2][2]=2
+                square[2][3]=2
+                square[2][4]=2
+                square[2][5]=2
+                square[2][6]=2
+
+                square[3][1]=2
+                square[3][2]=2
+                square[3][3]=2
+                square[3][4]=2
+                square[3][5]=1
+                square[3][6]=2
+                square[3][7]=2
+                square[3][8]=2
+
+                square[4][1]=2
+                square[4][2]=2
+                square[4][3]=2
+                square[4][4]=2
+                square[4][5]=2
+                square[4][6]=1
+                square[4][7]=2
+
+                square[5][1]=2
+                square[5][2]=2
+                square[5][3]=2
+                square[5][4]=1
+                square[5][5]=1
+                square[5][6]=2
+                square[5][7]=2
+
+                square[6][1]=2
+                square[6][2]=2
+                square[6][3]=2
+                square[6][4]=2
+                square[6][5]=2
+                square[6][6]=2
+                square[6][7]=2
+
+                square[7][1]=2
+                square[7][3]=2
+                square[7][4]=2
+
+                square[8][3]=2
+
+        //二箇所ひっくり返る場合
+//        square[4][4]=2
+//        square[4][5]=1
+//        square[5][4]=1
+//        square[5][5]=2
+//        square[6][5]=1
+//        square[6][6]=2
         
+        //三箇所ひっくり返る場合
+//        square[3][4]=1
+//        square[4][4]=1
+//        square[4][5]=2
+//        square[4][6]=2
+//        square[5][3]=2
+//        square[5][4]=2
+//        square[5][5]=2
+//        square[5][6]=2
+//        square[6][5]=1
+//        square[6][6]=2
         
         //一番最初の状態生成
 //        square[4][4]=2
@@ -126,6 +139,7 @@ class Board: UIView{
     // 石が置かれた時
     //---------------------------
     func put(mybtn:OSERO,mycolor:Int){
+        //mycolorをBoolで受け取りたい.未実装
         print("置かれた座標 X\(mybtn.frameX) : Y\(mybtn.frameY)")
             //自分を中心とした前後左右斜めに色違いの石があるか
         for i in 0...7{
@@ -135,13 +149,25 @@ class Board: UIView{
 //            if(n==0){
 //            }
             if(n != 0){
-                //ここでnowOseroColorチェンジの関数を呼ぶ
-                OseroColorControl(nowoserocolor: nowOseroColor)
+                //ここで白黒を反転させる。
+                //mycolorをBoolで判断.未実装
+                 if(nextOseroColorControl == 0){
+                    if(mycolor == 1){
+                        OseroColorControl(nextoserocolor: nextOseroColor)
+                    }
+                    else if(mycolor == 2){
+                        nextOseroColor = true
+                        OseroColorControl(nextoserocolor: nextOseroColor)
+                    }
+                }
+                nextOseroColorControl += 1
+                
                 for i in 0...n{
                     square[mybtn.frameY+i*dy][mybtn.frameX+i*dx]=mycolor
                 }
             }
         }
+        nextOseroColorControl = 0
         
           //盤面全体の空白チェック
         if(mycolor == 1){
@@ -188,20 +214,16 @@ class Board: UIView{
     
     
     //------------------------------------------------
-    //            nowOseroColorの変更
+    //            nextOseroColorの変更
     //------------------------------------------------
-    func OseroColorControl(nowoserocolor:Bool){
-//        var nowOseroColorControl : Int = 0         //true,falseの制御
-        if(nowOseroColorControl == 0){
-            if(!nowOseroColor){
-                self.nowOseroColor=true
+    func OseroColorControl(nextoserocolor:Bool){
+            if(!nextOseroColor){
+                self.nextOseroColor=true
             }
             else{
-                self.nowOseroColor=false
+                self.nextOseroColor=false
             }
-        }
-        nowOseroColorControl += 1
-        print("nowOseroColor:\(nowOseroColor)")
+        print("nextOseroColor:\(nextOseroColor)")
     }
     
     
@@ -287,8 +309,8 @@ class Board: UIView{
         return finishfont
     }
     //現在の白か黒か取得
-    func GetNowOseroColor()->Bool{
-        return nowOseroColor
+    func GetNextOseroColor()->Bool{
+        return nextOseroColor
     }
     //盤面上の石の状態
     func Return_Color()->[[Int]]{

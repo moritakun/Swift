@@ -141,9 +141,10 @@ class ViewController: UIViewController {
     //         オセロ盤タップ
     //-----------------------------------
     @objc func pushed(mybtn:OSERO){
-        var judge:Bool=board.GetNowOseroColor()
+        let judge:Bool=board.GetNextOseroColor()
         print("judge:\(judge)")
         if(!judge){
+            //mycolorをtrue&falseで渡したい。未実装
             board.put(mybtn:mybtn,mycolor:Color.BLACK.rawValue)
         }
         else{
@@ -209,8 +210,8 @@ class ViewController: UIViewController {
     //                   blankの描画
     //----------------------------------------------------
     func blankchecklistDraw(){
-        var getnowoserocolor=board.GetNowOseroColor()
-        print("getnowoserocolor:\(getnowoserocolor)")
+        var getnextoserocolor=board.GetNextOseroColor()
+        print("getnowoserocolor:\(getnextoserocolor)")
         let getfinishfont=board.GetFinishFont()
            getblankchecklist=board.blankchecklist()
         
@@ -218,18 +219,18 @@ class ViewController: UIViewController {
                blankchecklistEmpty = getblankchecklist.isEmpty
                if(blankchecklistEmpty == true){  //要素が無い(もう一度同じ石を置く)
                        //次の要素が無いなら、また現在のblankcheckをする
-                       //!getnowoserocolor(false:黒)なら、(true:白)をチェック
-                   if(!getnowoserocolor){
+                       //!getnextoserocolor(false:黒)なら、(true:白)をチェック
+                   if(!getnextoserocolor){
                        getblankchecklist = board.BlankCheck(mycolor: 2)
                        for i in 0..<(getblankchecklist.count){
                            let y = getblankchecklist[i][0]
                            let x = getblankchecklist[i][1]
                            ButtonArray[y*10+x].isEnabled = true
                        }
-                       getnowoserocolor = true
+                       getnextoserocolor = true
                        label.text=font[1]
                    }
-                   //!getnowoserocolor(true:白)なら、(false:黒)をチェック
+                   //!getnextoserocolor(true:白)なら、(false:黒)をチェック
                    else{
                        getblankchecklist = board.BlankCheck(mycolor: 1)
                        for i in 0..<(getblankchecklist.count){
@@ -237,11 +238,12 @@ class ViewController: UIViewController {
                            let x = getblankchecklist[i][1]
                            ButtonArray[y*10+x].isEnabled = true
                        }
-                       getnowoserocolor = false
+                       getnextoserocolor = false
+                    board.OseroColorControl(nextoserocolor: false)
+                    
                        label.text=font[0]
-                      print("getblankchecklist-true:\(getblankchecklist)")
+                      print("getblankchecklist-true:\(getblankchecklist)\n")
                    }
-//                   print("getblankchecklist-true:\(getblankchecklist),\(blankchecklistEmpty)")
                }
                else if(blankchecklistEmpty == false){//要素がある
                    for i in 0..<(getblankchecklist.count){
@@ -249,9 +251,9 @@ class ViewController: UIViewController {
                        let x = getblankchecklist[i][1]
                        ButtonArray[y*10+x].isEnabled = true
                    }
-                   print("getblankchecklist-false:\(getblankchecklist)")
+                   print("getblankchecklist-false:\(getblankchecklist)\n")
                     
-                if(!getnowoserocolor){
+                if(!getnextoserocolor){
                     label.text=font[0]
                 }
                 else{

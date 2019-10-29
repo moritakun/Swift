@@ -1,0 +1,607 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		EDBDE0F22366D6B100775621 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBDE0F12366D6B100775621 /* AppDelegate.swift */; };
+		EDBDE0F42366D6B100775621 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBDE0F32366D6B100775621 /* SceneDelegate.swift */; };
+		EDBDE0F62366D6B100775621 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBDE0F52366D6B100775621 /* ViewController.swift */; };
+		EDBDE0F92366D6B100775621 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDBDE0F72366D6B100775621 /* Main.storyboard */; };
+		EDBDE0FB2366D6B600775621 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDBDE0FA2366D6B600775621 /* Assets.xcassets */; };
+		EDBDE0FE2366D6B600775621 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDBDE0FC2366D6B600775621 /* LaunchScreen.storyboard */; };
+		EDBDE1092366D6B600775621 /* OseroTopViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBDE1082366D6B600775621 /* OseroTopViewTests.swift */; };
+		EDBDE1142366D6B600775621 /* OseroTopViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBDE1132366D6B600775621 /* OseroTopViewUITests.swift */; };
+		EDBDE1222366D6DD00775621 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBDE1212366D6DD00775621 /* Board.swift */; };
+		EDBDE12E2367FC9000775621 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBDE12D2367FC8F00775621 /* StartViewController.swift */; };
+		EDBDE13023681FA900775621 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EDBDE12F23681FA900775621 /* Default-568h@2x.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EDBDE1052366D6B600775621 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EDBDE0E62366D6B100775621 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EDBDE0ED2366D6B100775621;
+			remoteInfo = OseroTopView;
+		};
+		EDBDE1102366D6B600775621 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EDBDE0E62366D6B100775621 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EDBDE0ED2366D6B100775621;
+			remoteInfo = OseroTopView;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		EDBDE0EE2366D6B100775621 /* OseroTopView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OseroTopView.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EDBDE0F12366D6B100775621 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		EDBDE0F32366D6B100775621 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		EDBDE0F52366D6B100775621 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		EDBDE0F82366D6B100775621 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		EDBDE0FA2366D6B600775621 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EDBDE0FD2366D6B600775621 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		EDBDE0FF2366D6B600775621 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EDBDE1042366D6B600775621 /* OseroTopViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OseroTopViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EDBDE1082366D6B600775621 /* OseroTopViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OseroTopViewTests.swift; sourceTree = "<group>"; };
+		EDBDE10A2366D6B600775621 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EDBDE10F2366D6B600775621 /* OseroTopViewUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OseroTopViewUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EDBDE1132366D6B600775621 /* OseroTopViewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OseroTopViewUITests.swift; sourceTree = "<group>"; };
+		EDBDE1152366D6B600775621 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EDBDE1212366D6DD00775621 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
+		EDBDE12D2367FC8F00775621 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+		EDBDE12F23681FA900775621 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EDBDE0EB2366D6B100775621 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EDBDE1012366D6B600775621 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EDBDE10C2366D6B600775621 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EDBDE0E52366D6B100775621 = {
+			isa = PBXGroup;
+			children = (
+				EDBDE12F23681FA900775621 /* Default-568h@2x.png */,
+				EDBDE0F02366D6B100775621 /* OseroTopView */,
+				EDBDE1072366D6B600775621 /* OseroTopViewTests */,
+				EDBDE1122366D6B600775621 /* OseroTopViewUITests */,
+				EDBDE0EF2366D6B100775621 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EDBDE0EF2366D6B100775621 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EDBDE0EE2366D6B100775621 /* OseroTopView.app */,
+				EDBDE1042366D6B600775621 /* OseroTopViewTests.xctest */,
+				EDBDE10F2366D6B600775621 /* OseroTopViewUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EDBDE0F02366D6B100775621 /* OseroTopView */ = {
+			isa = PBXGroup;
+			children = (
+				EDBDE0F12366D6B100775621 /* AppDelegate.swift */,
+				EDBDE0F32366D6B100775621 /* SceneDelegate.swift */,
+				EDBDE0F52366D6B100775621 /* ViewController.swift */,
+				EDBDE12D2367FC8F00775621 /* StartViewController.swift */,
+				EDBDE1212366D6DD00775621 /* Board.swift */,
+				EDBDE0F72366D6B100775621 /* Main.storyboard */,
+				EDBDE0FA2366D6B600775621 /* Assets.xcassets */,
+				EDBDE0FC2366D6B600775621 /* LaunchScreen.storyboard */,
+				EDBDE0FF2366D6B600775621 /* Info.plist */,
+			);
+			path = OseroTopView;
+			sourceTree = "<group>";
+		};
+		EDBDE1072366D6B600775621 /* OseroTopViewTests */ = {
+			isa = PBXGroup;
+			children = (
+				EDBDE1082366D6B600775621 /* OseroTopViewTests.swift */,
+				EDBDE10A2366D6B600775621 /* Info.plist */,
+			);
+			path = OseroTopViewTests;
+			sourceTree = "<group>";
+		};
+		EDBDE1122366D6B600775621 /* OseroTopViewUITests */ = {
+			isa = PBXGroup;
+			children = (
+				EDBDE1132366D6B600775621 /* OseroTopViewUITests.swift */,
+				EDBDE1152366D6B600775621 /* Info.plist */,
+			);
+			path = OseroTopViewUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EDBDE0ED2366D6B100775621 /* OseroTopView */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EDBDE1182366D6B600775621 /* Build configuration list for PBXNativeTarget "OseroTopView" */;
+			buildPhases = (
+				EDBDE0EA2366D6B100775621 /* Sources */,
+				EDBDE0EB2366D6B100775621 /* Frameworks */,
+				EDBDE0EC2366D6B100775621 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OseroTopView;
+			productName = OseroTopView;
+			productReference = EDBDE0EE2366D6B100775621 /* OseroTopView.app */;
+			productType = "com.apple.product-type.application";
+		};
+		EDBDE1032366D6B600775621 /* OseroTopViewTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EDBDE11B2366D6B600775621 /* Build configuration list for PBXNativeTarget "OseroTopViewTests" */;
+			buildPhases = (
+				EDBDE1002366D6B600775621 /* Sources */,
+				EDBDE1012366D6B600775621 /* Frameworks */,
+				EDBDE1022366D6B600775621 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EDBDE1062366D6B600775621 /* PBXTargetDependency */,
+			);
+			name = OseroTopViewTests;
+			productName = OseroTopViewTests;
+			productReference = EDBDE1042366D6B600775621 /* OseroTopViewTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		EDBDE10E2366D6B600775621 /* OseroTopViewUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EDBDE11E2366D6B600775621 /* Build configuration list for PBXNativeTarget "OseroTopViewUITests" */;
+			buildPhases = (
+				EDBDE10B2366D6B600775621 /* Sources */,
+				EDBDE10C2366D6B600775621 /* Frameworks */,
+				EDBDE10D2366D6B600775621 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EDBDE1112366D6B600775621 /* PBXTargetDependency */,
+			);
+			name = OseroTopViewUITests;
+			productName = OseroTopViewUITests;
+			productReference = EDBDE10F2366D6B600775621 /* OseroTopViewUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EDBDE0E62366D6B100775621 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1120;
+				LastUpgradeCheck = 1120;
+				ORGANIZATIONNAME = "森田裕";
+				TargetAttributes = {
+					EDBDE0ED2366D6B100775621 = {
+						CreatedOnToolsVersion = 11.2;
+					};
+					EDBDE1032366D6B600775621 = {
+						CreatedOnToolsVersion = 11.2;
+						TestTargetID = EDBDE0ED2366D6B100775621;
+					};
+					EDBDE10E2366D6B600775621 = {
+						CreatedOnToolsVersion = 11.2;
+						TestTargetID = EDBDE0ED2366D6B100775621;
+					};
+				};
+			};
+			buildConfigurationList = EDBDE0E92366D6B100775621 /* Build configuration list for PBXProject "OseroTopView" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EDBDE0E52366D6B100775621;
+			productRefGroup = EDBDE0EF2366D6B100775621 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EDBDE0ED2366D6B100775621 /* OseroTopView */,
+				EDBDE1032366D6B600775621 /* OseroTopViewTests */,
+				EDBDE10E2366D6B600775621 /* OseroTopViewUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EDBDE0EC2366D6B100775621 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EDBDE0FE2366D6B600775621 /* LaunchScreen.storyboard in Resources */,
+				EDBDE13023681FA900775621 /* Default-568h@2x.png in Resources */,
+				EDBDE0FB2366D6B600775621 /* Assets.xcassets in Resources */,
+				EDBDE0F92366D6B100775621 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EDBDE1022366D6B600775621 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EDBDE10D2366D6B600775621 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EDBDE0EA2366D6B100775621 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EDBDE12E2367FC9000775621 /* StartViewController.swift in Sources */,
+				EDBDE0F62366D6B100775621 /* ViewController.swift in Sources */,
+				EDBDE0F22366D6B100775621 /* AppDelegate.swift in Sources */,
+				EDBDE1222366D6DD00775621 /* Board.swift in Sources */,
+				EDBDE0F42366D6B100775621 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EDBDE1002366D6B600775621 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EDBDE1092366D6B600775621 /* OseroTopViewTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EDBDE10B2366D6B600775621 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EDBDE1142366D6B600775621 /* OseroTopViewUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EDBDE1062366D6B600775621 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EDBDE0ED2366D6B100775621 /* OseroTopView */;
+			targetProxy = EDBDE1052366D6B600775621 /* PBXContainerItemProxy */;
+		};
+		EDBDE1112366D6B600775621 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EDBDE0ED2366D6B100775621 /* OseroTopView */;
+			targetProxy = EDBDE1102366D6B600775621 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		EDBDE0F72366D6B100775621 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EDBDE0F82366D6B100775621 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		EDBDE0FC2366D6B600775621 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EDBDE0FD2366D6B600775621 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		EDBDE1162366D6B600775621 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		EDBDE1172366D6B600775621 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EDBDE1192366D6B600775621 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9WXQ27SLSD;
+				INFOPLIST_FILE = OseroTopView/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = morita.OseroTopView;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EDBDE11A2366D6B600775621 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9WXQ27SLSD;
+				INFOPLIST_FILE = OseroTopView/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = morita.OseroTopView;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		EDBDE11C2366D6B600775621 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9WXQ27SLSD;
+				INFOPLIST_FILE = OseroTopViewTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = morita.OseroTopViewTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OseroTopView.app/OseroTopView";
+			};
+			name = Debug;
+		};
+		EDBDE11D2366D6B600775621 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9WXQ27SLSD;
+				INFOPLIST_FILE = OseroTopViewTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = morita.OseroTopViewTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OseroTopView.app/OseroTopView";
+			};
+			name = Release;
+		};
+		EDBDE11F2366D6B600775621 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9WXQ27SLSD;
+				INFOPLIST_FILE = OseroTopViewUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = morita.OseroTopViewUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = OseroTopView;
+			};
+			name = Debug;
+		};
+		EDBDE1202366D6B600775621 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9WXQ27SLSD;
+				INFOPLIST_FILE = OseroTopViewUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = morita.OseroTopViewUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = OseroTopView;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EDBDE0E92366D6B100775621 /* Build configuration list for PBXProject "OseroTopView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EDBDE1162366D6B600775621 /* Debug */,
+				EDBDE1172366D6B600775621 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EDBDE1182366D6B600775621 /* Build configuration list for PBXNativeTarget "OseroTopView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EDBDE1192366D6B600775621 /* Debug */,
+				EDBDE11A2366D6B600775621 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EDBDE11B2366D6B600775621 /* Build configuration list for PBXNativeTarget "OseroTopViewTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EDBDE11C2366D6B600775621 /* Debug */,
+				EDBDE11D2366D6B600775621 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EDBDE11E2366D6B600775621 /* Build configuration list for PBXNativeTarget "OseroTopViewUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EDBDE11F2366D6B600775621 /* Debug */,
+				EDBDE1202366D6B600775621 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EDBDE0E62366D6B100775621 /* Project object */;
+}

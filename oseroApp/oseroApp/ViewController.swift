@@ -49,6 +49,7 @@ class OSERO:UIButton{
 
 
 class ViewController: UIViewController {
+
      var button=UIButton()
      var ButtonArray:[UIButton]=[]
      var board = Board()
@@ -64,8 +65,7 @@ class ViewController: UIViewController {
                          "白の(_・ω・)_ﾊﾞｧﾝ"]       //1
     
     let FinishFont:String = "終了|ω･) "
-    
-    
+
     
     
     
@@ -279,8 +279,8 @@ class ViewController: UIViewController {
 //               blankchecklistの初期化
 //    ----------------------------------------------------------------
     func farstblankchecklist(){
-        let getblack=board.GetBlack()
-        let getwhite=board.GetWhite()
+//        let getblack=board.GetBlack()
+//        let getwhite=board.GetWhite()
         
         getblankchecklist = board.BlankCheck(mycolor: 1)
         for i in 0..<(getblankchecklist.count){
@@ -288,13 +288,12 @@ class ViewController: UIViewController {
             let x = getblankchecklist[i][1]
             ButtonArray[y*10+x].isEnabled = true
         }
-        
         label.text=font[0]
-        label1.text="白:\(getwhite)"
-        label2.text="黒:\(getblack)"
+//        label1.text="白:\(getwhite)"
+//        label2.text="黒:\(getblack)"
         view.addSubview(label)
-        view.addSubview(label1)
-        view.addSubview(label2)
+//        view.addSubview(label1)
+//        view.addSubview(label2)
         print("\(getblankchecklist)\n")
     }
     

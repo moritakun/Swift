@@ -16,6 +16,7 @@
 		EDA6A117234C1065001208D6 /* oseroAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA6A116234C1065001208D6 /* oseroAppTests.swift */; };
 		EDA6A122234C1065001208D6 /* oseroAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA6A121234C1065001208D6 /* oseroAppUITests.swift */; };
 		EDA6A134234C1265001208D6 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA6A133234C1265001208D6 /* Board.swift */; };
+		EDBDE1322368238C00775621 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBDE1312368238C00775621 /* StartViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		EDA6A121234C1065001208D6 /* oseroAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = oseroAppUITests.swift; sourceTree = "<group>"; };
 		EDA6A123234C1065001208D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EDA6A133234C1265001208D6 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
+		EDBDE1312368238C00775621 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 				EDA6A0FF234C1062001208D6 /* AppDelegate.swift */,
 				EDA6A101234C1062001208D6 /* SceneDelegate.swift */,
 				EDA6A103234C1062001208D6 /* ViewController.swift */,
+				EDBDE1312368238C00775621 /* StartViewController.swift */,
 				EDA6A133234C1265001208D6 /* Board.swift */,
 				EDA6A105234C1062001208D6 /* Main.storyboard */,
 				EDA6A108234C1064001208D6 /* Assets.xcassets */,
@@ -262,6 +265,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDBDE1322368238C00775621 /* StartViewController.swift in Sources */,
 				EDA6A104234C1062001208D6 /* ViewController.swift in Sources */,
 				EDA6A100234C1062001208D6 /* AppDelegate.swift in Sources */,
 				EDA6A134234C1265001208D6 /* Board.swift in Sources */,

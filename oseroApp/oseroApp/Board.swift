@@ -125,6 +125,8 @@ class Board: UIView{
             square[i][0]=3
             square[i][9]=3
         }
+        
+        Now_Count()
     }
     
     

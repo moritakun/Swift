@@ -18,7 +18,6 @@ class ViewController: UIViewController {
     var count = 0
     
     
-    
     //親呼び出し
     override func viewDidLoad() {
         super.viewDidLoad()

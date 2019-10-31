@@ -12,12 +12,20 @@ class StartViewController: UIViewController {
  
     override func viewDidLoad() {
         super.viewDidLoad()
+        let titlelabel = UILabel(frame: CGRect(x: 0, y: 200, width: 414, height: 100))
+        titlelabel.text="リバーシ"
+        titlelabel.backgroundColor=UIColor.darkGray
+        titlelabel.textAlignment=NSTextAlignment.center
+        titlelabel.font=UIFont.systemFont(ofSize: 60)
+        titlelabel.textColor=UIColor.white
+        self.view.addSubview(titlelabel)
         
         let nextButton = UIButton(frame: CGRect(x:100,y:500,width: 200,height:100))
-           nextButton.setTitle("START!", for: .normal)
-           nextButton.backgroundColor = UIColor.green
+        nextButton.setTitle("START!", for: .normal)
+        nextButton.backgroundColor = UIColor.green
+        
         nextButton.addTarget(self, action: #selector(StartViewController.goNext(_:)), for: .touchUpInside)
-           view.addSubview(nextButton)
+        view.addSubview(nextButton)
     }
     
     @objc func goNext(_ sender: UIButton) {
@@ -25,6 +33,8 @@ class StartViewController: UIViewController {
         nextvc.view.backgroundColor = UIColor.white
         self.present(nextvc, animated: true, completion: nil)
     }
+    
+    
     
     override func didReceiveMemoryWarning() {
          super.didReceiveMemoryWarning()

@@ -146,7 +146,6 @@ class ViewController: UIViewController {
 //    -----------------------------------
     @objc func pushed(mybtn:OSERO){
         if(player_Color == 1){
-            //mycolorをtrue&falseで渡したい。未実装
             board.put(mybtn:mybtn,mycolor:Color.BLACK.rawValue)
         }
         else{
@@ -279,8 +278,6 @@ class ViewController: UIViewController {
 //               blankchecklistの初期化
 //    ----------------------------------------------------------------
     func farstblankchecklist(){
-//        let getblack=board.GetBlack()
-//        let getwhite=board.GetWhite()
         
         getblankchecklist = board.BlankCheck(mycolor: 1)
         for i in 0..<(getblankchecklist.count){
@@ -289,11 +286,8 @@ class ViewController: UIViewController {
             ButtonArray[y*10+x].isEnabled = true
         }
         label.text=font[0]
-//        label1.text="白:\(getwhite)"
-//        label2.text="黒:\(getblack)"
         view.addSubview(label)
-//        view.addSubview(label1)
-//        view.addSubview(label2)
+
         print("\(getblankchecklist)\n")
     }
     

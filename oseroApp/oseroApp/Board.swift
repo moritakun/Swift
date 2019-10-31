@@ -138,7 +138,6 @@ class Board: UIView{
 //     石が置かれた時
 //    ---------------------------
     func put(mybtn:OSERO,mycolor:Int){
-//        mycolorをBoolで受け取りたい.未実装
         print("置かれた座標 X\(mybtn.frameX) : Y\(mybtn.frameY)")
 //        置いた場所を中心に前後左右斜めの座標をチェック
         for i in 0...7{
